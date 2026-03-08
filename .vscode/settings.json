@@ -59,4 +59,16 @@
     }
   ],
   "latex-workshop.latex.recipe.default": "pdflatex -> biber -> makeglossaries -> pdflatex x2",
+  "[latex]": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "James-Yu.latex-workshop"
+  },
+  "latex-workshop.formatting.latex": "latexindent",
+  "latex-workshop.formatting.latexindent.path": "latexindent",
+  "latex-workshop.formatting.latexindent.args": [
+    "-c",
+    "%DIR%/",
+    "%TMPFILE%",
+    "-y=defaultIndent: '  '"
+  ]
 }

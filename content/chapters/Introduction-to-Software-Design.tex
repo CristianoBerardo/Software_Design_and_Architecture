@@ -9,14 +9,14 @@ it hard to understand and modify the system.
   C = \sum_p c_pt_p
 \end{equation*}
 
-Where $C$ is determined by all software parts $p$, $c_p$ is the complexity of part $p$, 
+Where $C$ is determined by all software parts $p$, $c_p$ is the complexity of part $p$,
 and $t_p$ is the fraction of time spent on part $p$.
 
 \subsection{Syntax complexity}
 
 \begin{itemize}
-  \item Change amplification: change require operating in different places 
-  \item Cognitive load: how mutch information to learn to understand and perform a task. Some times is better to write longer code to reduce the complexity and so the cognitive load. 
+  \item Change amplification: change require operating in different places
+  \item Cognitive load: how mutch information to learn to understand and perform a task. Some times is better to write longer code to reduce the complexity and so the cognitive load.
   \item Unknown unknowns: there are partes of the system that we don't know where they are or even that they exist.
 \end{itemize}
 
@@ -29,7 +29,7 @@ and $t_p$ is the fraction of time spent on part $p$.
 \subsection{Strategical vs. Tactical Programming}
 
 \begin{itemize}
-  \item \textbf{Tactical programming}: focus on having code that works as fast as possible. "Move fast and break things". 
+  \item \textbf{Tactical programming}: focus on having code that works as fast as possible. "Move fast and break things".
   \item \textbf{Strategical programming}: focus on long term maintainability and scalability. "Working code is not enough".
 \end{itemize}
 
@@ -44,8 +44,8 @@ To improve and eliminate dependency and complexity, we can use modules. A module
 
 \subsection{Abstraction}
 
-What we tipically do is to perform an abstraction. Abstraction means selective removal of information. 
-Is a simplified view of the something that omits "unimportant" information. Omitting information can lead to eads to unknowns and 
+What we tipically do is to perform an abstraction. Abstraction means selective removal of information.
+Is a simplified view of the something that omits "unimportant" information. Omitting information can lead to eads to unknowns and
 keeping unimportant information can leads to cognitive overload.
 
 \subsubsection{Deep modules and shallow interfaces}
@@ -53,23 +53,23 @@ keeping unimportant information can leads to cognitive overload.
 
 \begin{minipage}{0.95\linewidth}
   % Primo blocco: 50% dello spazio per il codice
-  \begin{minipage}{0.65\linewidth} 
+  \begin{minipage}{0.65\linewidth}
 
     \textbf{Deep modules}: modules with a simple interface and a complex implementation. They are good because they reduce the cognitive load and the change amplification. They are bad because they can lead to unknown unknowns.
-  \newline\textbf{Shallow interfaces}: modules with a complex interface and a simple implementation. They are good because they reduce the unknown unknowns. They are bad because they can lead to cognitive overload and change amplification.
+    \newline\textbf{Shallow interfaces}: modules with a complex interface and a simple implementation. They are good because they reduce the unknown unknowns. They are bad because they can lead to cognitive overload and change amplification.
 
 
-\end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
+  \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
   \hfill
   \begin{minipage}{0.3\linewidth}
 
     \includegraphics[width=1\linewidth]{images/DI-esempio1.png}
 
-\end{minipage}
+  \end{minipage}
 \end{minipage}
 
 \subsection{Information Hiding}
-Information hiding is the principle of hiding the implementation details of a module from the users of the module. 
+Information hiding is the principle of hiding the implementation details of a module from the users of the module.
 Example sort function: we want to sort a list of numbers, we don't care about how the sorting algorithm used.
 
 
@@ -80,10 +80,10 @@ in multiple modules with consequences of creating dependencies.
 
 \subsection{Information Hiding Red Flags}
 \begin{itemize}
-  \item \textbf{temporal decomposition}: execution order is reflected in the code structure. Operations that happen 
-  in different times are in different classes.
+  \item \textbf{temporal decomposition}: execution order is reflected in the code structure. Operations that happen
+        in different times are in different classes.
   \item \textbf{overexposure}: API forces knowledge about rarely used features to use common ones. E.g. \mintinline{java}{BufferedReader r = new BufferedReader(new InputStreamReader(System.in));}
-  \item \textbf{Too many classes}: code is divide into too many shallow classes. 
+  \item \textbf{Too many classes}: code is divide into too many shallow classes.
 \end{itemize}
 
 \subsection{Method separation}
@@ -106,17 +106,17 @@ If we have a lot of repeded code and/or we mixed specific and general code, mean
 
   \begin{minipage}{1\linewidth}
     % Primo blocco: 50% dello spazio per il codice
-    \begin{minipage}{0.5\linewidth} 
+    \begin{minipage}{0.5\linewidth}
 
       Each method should do one thing and do it completely
 
-  \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
+    \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
     \hfill
     \begin{minipage}{0.45\linewidth}
 
       \includegraphics[width=1\linewidth]{images/DI-esempio2.png}
 
-  \end{minipage}
+    \end{minipage}
   \end{minipage}
 \end{center}
 
@@ -127,15 +127,15 @@ If we have a lot of repeded code and/or we mixed specific and general code, mean
 Obscurity is the principle of making the important information clearly visible and the unimportant information hidden.
 Obscurity is a great source of complexity. Obscure code is hard to Understand and creates more Bugs.
 
-The solution to obscurity is writing obvious code, this means with a quick glance we can understand what the code does. 
+The solution to obscurity is writing obvious code, this means with a quick glance we can understand what the code does.
 We can achieve this by using abstraction layers.
 
 
 \subsection{Abstraction layers}
 
-Software systems are composed in layers. Higher layers use the facilities provided by lower layers. 
+Software systems are composed in layers. Higher layers use the facilities provided by lower layers.
 
-Abstraction simplifies understanding and reduces obscurity. 
+Abstraction simplifies understanding and reduces obscurity.
 
 In a well-designed system, each layer provides a different abstraction from the layers above and below it.
 
@@ -145,7 +145,7 @@ In a well-designed system, each layer provides a different abstraction from the 
 Some red flags that indicate that we have a problem with abstraction layers are:
 
 \begin{itemize}
-  \item \textbf{Pass-Through methods}: is a method that does nothing but call another method. 
+  \item \textbf{Pass-Through methods}: is a method that does nothing but call another method.
   \item \textbf{Pass-Through variables}: is a variable that is passed through over and over down a long chain of method calls.
 \end{itemize}
 
@@ -185,7 +185,7 @@ A piece of code might throw exceptions in different ways:
 \end{itemize}
 
 \subsection{Deﬁne Errors out of Existence}
-What are the solutions to errors? Define errors out of existence. 
+What are the solutions to errors? Define errors out of existence.
 This means, not ignore the error but to redefine the behavior of a method so that no error is
 required.
 
@@ -200,14 +200,14 @@ There are some methods to limit the number of exceptions that a method can throw
   \item Handle exceptions at the point where they are thrown, if possible
   \item Exception aggregation means handle different exceptions with same handler
   \item Just crash
-  \item Mask exceptions avoiding unexpected exceptions 
+  \item Mask exceptions avoiding unexpected exceptions
 \end{itemize}
 
 
 \section{Dependency Dimensions}
 
 \begin{enumerate}
-  \item Structural (Code-Level) Dependencies 
+  \item Structural (Code-Level) Dependencies
   \item Runtime / Distribution Dependencies
   \item Data-Level Dependencies
   \item Behavioral Dependencies
