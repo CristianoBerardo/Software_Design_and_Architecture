@@ -1,0 +1,58 @@
+\chapter{From design to architecture: Design Principles}
+
+Design principles means follow a clean architecture and a clean architecture means that the 
+architecture can easily evolve, to be changed.
+
+
+
+\section{Liskov Substitution Principle - LSP}
+
+If we substrute o2 vitw o1 and the behavior of p
+does not change means S is derived class of T.
+
+S is a subtype od T.
+
+\section{Interface Seggregation Principle - ISP}
+
+you shoudnt building interfaces or classes with too many operation
+that are not essential, not used.
+
+Similart to SRP we have different actor, that represent diff class
+U1 use only operation1 and U2 use only operation2 and 
+U3 use only operation3
+
+if u wnat to change operation3 you need to redeploy it, 
+it is dangerous.
+Is diff from the SRP we need to modularize better, how?
+
+Inserting interfaces.The classes use the interfaces instead the
+class and the interface implement the class.
+
+if we change operation1 we impact also user2 and user3, if we
+change the interface we impact only the corrisponded user.
+
+
+---
+
+No class with too much code that is not very used in certains 
+cases.
+
+\section{Dependecy Inversion Principle - DIP}
+You should alwaies have dependecies that lover moduls depends on higher moduls, not the opposite.
+Any concrete class only abstract class or interface, not on concrete class.
+
+We can make an interface:
+
+App -> service -> concrete class
+App -> iService <- concrete class
+
+We can packeage the app and the interface togheder.
+
+We can do something also the factory from the app -> iFactory <- concrete factory -> concrete class -> iService <- app
+
+
+
+  
+
+
+
