@@ -12,6 +12,7 @@ The goal of the SOLID principles is to create mid-level software structures
 (modules) that:
 
 \begin{itemize}
+  \setlength{\itemsep}{0pt}
   \item Are easy to understand
   \item Allow changes in the most "comfortable" way
   \item Are the basis of reusable components
@@ -25,13 +26,12 @@ that a module should be responsible to \textbf{one}, and only one, \textbf{actor
 This is helpful to separate code used by different actors and for a better
 maintenance.
 
-\paragraph{Example}
-
-
 
 \begin{center}
   \begin{minipage}{\linewidth}
-    \begin{minipage}{0.6\linewidth}
+    \begin{minipage}{0.7\linewidth}
+
+      \paragraph{Example}
       \textit{CalculateTax()} is specified by the
       Finance Department.
 
@@ -49,9 +49,9 @@ maintenance.
       the average grade.
     \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
     \hfill
-    \begin{minipage}{0.40\linewidth}
+    \begin{minipage}{0.25\linewidth}
       \centering
-      \includegraphics[width=\linewidth]{images/DesignPrinciples/DP-esempio1.png}
+      \includegraphics[width=0.9\linewidth]{images/DesignPrinciples/DP-esempio1.png}
     \end{minipage}
   \end{minipage}
 \end{center}
@@ -60,22 +60,22 @@ Changes in \textit{ComputeAverage()} affect two actors: errors may arise and
 also changes to Class Student due to different needs of actors may lead to
 collisions and merges.
 
+\newpage
 \subsubsection{Solution 1: Separate data from functions}
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio2.png}
+  \includegraphics[width=0.25\linewidth]{images/DesignPrinciples/DP-esempio2.png}
 \end{figure}
 
 \subsubsection{Solution 2: Use the Façade pattern}
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio3.png}
+  \includegraphics[width=0.25\linewidth]{images/DesignPrinciples/DP-esempio3.png}
 \end{figure}
 
-You increase cupling and complexity, its a trade off.
-But the separation is splitted.
+You increase cupling and complexity, its a trade off, but the separation is splitted.
 
 \begin{tcolorbox}
   \textbf{Note:} You increase cupling and complexity but the separation is splitted.
@@ -83,10 +83,11 @@ But the separation is splitted.
 
 \subsubsection{Solution 2: variation}
 
-\begin{figure}[htbp]
+\begin{figure}[htbp!]
   \centering
-  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio4.png}
+  \includegraphics[width=0.25\linewidth]{images/DesignPrinciples/DP-esempio4.png}
 \end{figure}
+
 
 \section{Open-Closed Principle - OCP}
 
@@ -106,31 +107,34 @@ system into components and arranges these components in a
 dependency hierarchy that protects higher-level components from
 changes in lower-level components.
 
-\paragraph{Example}
+\begin{center}
+  \begin{minipage}{\linewidth}
+    \begin{minipage}{0.6\linewidth}
 
-A system displays summary information about a student's career at
-the university on a dashboard: Subjects (those passed with grades), Taxes
-paid and due, Current semester schedule, Next exams, Important notices,
-Stakeholders ask for a printed report with only information on
-subjects and taxes, and a different formatting.
+      \paragraph{Example}
 
+      A system displays summary information about a student's career at
+      the university on a dashboard: Subjects (those passed with grades), Taxes
+      paid and due, Current semester schedule, Next exams, Important notices,
+      Stakeholders ask for a printed report with only information on
+      subjects and taxes, and a different formatting.\newline
 
-Generating the report involves two separate responsibilities:
+      Generating the report involves two separate responsibilities:\newline
+      1. the calculation of the reported data \newline
+      2 .the presentation of that data into a web- and printer-friendly form.
 
-\begin{itemize}
-  \item the calculation of the reported data
-  \item the presentation of that data into a web- and printer-friendly form.
-\end{itemize}
+    \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
+    \hfill
+    \begin{minipage}{0.35\linewidth}
+      \centering
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio5.png}
-\end{figure}
+      \includegraphics[width=\linewidth]{images/DesignPrinciples/DP-esempio5.png}
+      \vspace{1cm}
+      \includegraphics[width=\linewidth]{images/DesignPrinciples/DP-esempio6.png}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio6.png}
-\end{figure}
+    \end{minipage}
+  \end{minipage}
+\end{center}
 
 
 \subsection{Liskov substitution principle - LSP}
@@ -145,7 +149,7 @@ Generating the report involves two separate responsibilities:
 
     \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
     \hfill
-    \begin{minipage}{0.40\linewidth}
+    \begin{minipage}{0.35\linewidth}
       \centering
       \includegraphics[width=\linewidth]{images/DesignPrinciples/DP-esempio7.png}
     \end{minipage}
@@ -156,27 +160,36 @@ Generating the report involves two separate responsibilities:
 If we substrute o2 vitw o1 and the behavior of p
 does not change means S is derived class of T.\newline
 
-This principle is about subtyping, not only for inheritance or extension
-but also for the logic, the behavior of the class.
 
-Derived type must fully support the substitution of their base types:
-functions that use pointers or references to base classes must be able
-to use objects of the derived without knowing it. This is related to the
-substitution property.
-
-A subtype can replace its supertype only if it behaves the same way.
-This idea, called \textbf{behavioral subtyping}, means the subtype doesn't just
-have the same methods as the supertype — it also follows the same
-rules for how those methods should work. That way, anything the
-client expects from the supertype will also hold true for the subtype.
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio8.png}
-\end{figure}
 
 \begin{center}
   \begin{minipage}{\linewidth}
+    \begin{minipage}{0.6\linewidth}
+      This principle is about subtyping, not only for inheritance or extension
+      but also for the logic, the behavior of the class.
+
+      Derived type must fully support the substitution of their base types:
+      functions that use pointers or references to base classes must be able
+      to use objects of the derived without knowing it. This is related to the
+      substitution property.
+
+      A subtype can replace its supertype only if it behaves the same way.
+      This idea, called \textbf{behavioral subtyping}, means the subtype doesn't just
+      have the same methods as the supertype — it also follows the same
+      rules for how those methods should work. That way, anything the
+      client expects from the supertype will also hold true for the subtype.
+    \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
+    \hfill
+    \begin{minipage}{0.35\linewidth}
+      \centering
+      \includegraphics[width=1\linewidth]{images/DesignPrinciples/DP-esempio8.png}
+    \end{minipage}
+  \end{minipage}
+\end{center}
+
+
+\begin{center}
+  \begin{minipage}{0.75\linewidth}
     \begin{minipage}{0.6\linewidth}
       \begin{minted}{java}
 Rectangle r = ...;
@@ -188,13 +201,13 @@ assert(r.area() == 10);
     \hfill
     \begin{minipage}{0.40\linewidth}
       \centering
-      \includegraphics[width=\linewidth]{images/DesignPrinciples/SP-esempio9.png}
+      \includegraphics[width=0.6\linewidth]{images/DesignPrinciples/SP-esempio9.png}
     \end{minipage}
   \end{minipage}
 \end{center}
 
 Depending on how r is defined, the assertion can fail because you not
-use the \textit{setH()} and \textit{setW()} methods of the rectangle but 
+use the \textit{setH()} and \textit{setW()} methods of the rectangle but
 you use the \textit{setSide()} method of the square.
 
 \paragraph{How to refactor it?} Using the Interface segregation principle - ISP
@@ -205,28 +218,35 @@ you use the \textit{setSide()} method of the square.
 % You shoudnt building interfaces or classes with too many operation
 % that are not essential, not used.
 
-Clients should not be forced to depend on operations and/or interfaces they do
-not use. Better to make fine grained interfaces that are client specific.
+\begin{center}
+  \begin{minipage}{\linewidth}
+    \begin{minipage}{0.6\linewidth}
+      Clients should not be forced to depend on operations and/or interfaces they do
+      not use. Better to make fine grained interfaces that are client specific.
 
-Similart to SRP we have different actors, represented by different classes.
-They are onlu interested in a subset of the operations, so we can split the interface in
-U1 use only operation1 and U2 use only operation2 and
-U3 use only operation3
+      Similart to SRP we have different actors, represented by different classes.
+      They are only interested in a subset of the operations, so we can split the interface in
+      U1 use only operation1 and U2 use only operation2 and
+      U3 use only operation3
+    \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
+    \hfill
+    \begin{minipage}{0.35\linewidth}
+      \centering
+      \includegraphics[width=0.85\linewidth]{images/DesignPrinciples/DP-esempio10.png}
+    \end{minipage}
+  \end{minipage}
+\end{center}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio10.png}
-\end{figure}
 
-In a statically typed language (e.g., Java), any change to op1() will force
+In a statically typed language (e.g., Java), any change to \textit{op1()} will force
 recompilation and redeployment of User2 and User3.
 
 Is different from the SRP because we need the classes but we need to modularize better.
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio11.png}
-\end{figure}
+% \begin{figure}[htbp]
+%   \centering
+%   \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio11.png}
+% \end{figure}
 
 Inserting interfaces the classes use the interfaces instead the
 class and the interface implement the class.
@@ -238,74 +258,122 @@ We also package the interface and the user toghether and this not impact
 the module.
 
 
-Operations are segregated into interfaces.
+\begin{center}
+  \begin{minipage}{\linewidth}
+    \begin{minipage}{0.6\linewidth}
+      Operations are segregated into interfaces.
 
-In a statically typed language (e.g., Java), a change to \textit{op1()} will NOT force
-recompilation and redeployment of User2 and User3.
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio12.png}
-\end{figure}
+      In a statically typed language (e.g., Java), a change to \textit{op1()} will NOT force
+      recompilation and redeployment of User2 and User3.
+    \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
+    \hfill
+    \begin{minipage}{0.35\linewidth}
+      \centering
+      \includegraphics[width=0.85\linewidth]{images/DesignPrinciples/DP-esempio12.png}
+    \end{minipage}
+  \end{minipage}
+\end{center}
 
 Remove useless operations from modules, otherwise they will force
 useless redeployments
 
 \subsection{Dependency inversion principle - DIP}
-You should always have dependencies that lower modules depend on higher modules,
-not the opposite.
-% Any concrete class only abstract class or interface, not on concrete class.
 
-High-level modules should not depend on anything from low-level
-modules.
+\begin{center}
+  \begin{minipage}{\linewidth}
+    \begin{minipage}{0.7\linewidth}
 
-Stable abstractions: abstractions should not depend on details, so
-that changes to details will not affect them.
+      You should always have dependencies that lower modules depend on higher modules,
+      not the opposite.
+      % Any concrete class only abstract class or interface, not on concrete class.
 
-\textbf{Idealistic tension}, in practice each system has at least a concrete
-component: the main function
+      \textbf{High-level modules should not depend on anything from low-level
+        modules.\newline
+        Stable abstractions: abstractions should not depend on details, so
+        that changes to details will not affect them.}
 
-We can make an interface:
+      \textbf{Idealistic tension}, in practice each system has at least a concrete
+      component: the main function
+
+      We can make an interface:
+    \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
+    \hfill
+    \begin{minipage}{0.3\linewidth}
+      \centering
+      \includegraphics[width=0.85\linewidth]{images/DesignPrinciples/DP-esempio13.png}
+    \end{minipage}
+  \end{minipage}
+\end{center}
+
+\paragraph{Example} In Java (or other statically typed languages), this means
+that use, import and include statements should refer only to source modules
+containing interfaces, abstract classes or any other type of abstraction.
+
+In dynamically typed languages, source code dependencies should not
+refer to modules in which functions being called are implemented.
+
 
 % App -> service -> concrete class
 % App -> iService <- concrete class
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio13.png}
-\end{figure}
+% \begin{figure}[htbp]
+%   \centering
+%   \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio13.png}
+% \end{figure}
 
 Also we can package the app and the interface together.
 
 \subsection{DIP: practical implications}
 
-Dependencies on concretions are tolerable when it comes to
-operating systems, platform facilities and other similar components
-whose changes are tightly controlled and not frequent.
 
-Abstract Factories are helpful to adhere to the DIP by minimizing the
-number of dependencies on concrete implementations and keep
-them separate from the rest of the system
 
- In general, volatility should be shifted towards implementation details
-without changing interfaces. 
+\begin{center}
+  \begin{minipage}{\linewidth}
+    \begin{minipage}{0.7\linewidth}
+      Dependencies on concretions are tolerable when it comes to
+      operating systems, platform facilities and other similar components
+      whose changes are tightly controlled and not frequent.
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio14.png}
-\end{figure}
+      \textbf{Abstract Factories are helpful} to adhere to the DIP by minimizing the
+      number of dependencies on concrete implementations and keep
+      them separate from the rest of the system
 
-\subsubsection{Using Factory Pattern}
+      In general, volatility should be shifted towards implementation details
+      without changing interfaces.
+    \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
+    \hfill
+    \begin{minipage}{0.3\linewidth}
+      \centering
+      \includegraphics[width=0.85\linewidth]{images/DesignPrinciples/DP-esempio14.png}
+    \end{minipage}
+  \end{minipage}
+\end{center}
 
-To create an instance of ConcreteImpl, the Application calls \textit{makeService()} from
-IServiceFactory interface, which is implemented by ServiceFactoryImpl class.
+\begin{itemize}
+  \setlength{\itemsep}{0pt}
+  \item Don't refer to volatile concrete classes
+  \item Don't refer from volatile concrete classes
+  \item Don't override concreted functions
+  \item Never mentions the name of anything concrete and volatile
+\end{itemize}
 
-ConcreteImpl is created and returned as a IService.
+\begin{center}
+  \begin{minipage}{\linewidth}
+    \begin{minipage}{0.7\linewidth}
+      \subsubsection{Using Factory Pattern}
+      To create an instance of ConcreteImpl, the Application calls \textit{makeService()} from
+      IServiceFactory interface, which is implemented by ServiceFactoryImpl class.
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio15.png}
-\end{figure}
+      ConcreteImpl is created and returned as a IService.
+    \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
+    \hfill
+    \begin{minipage}{0.3\linewidth}
+      \centering
+      \includegraphics[width=0.85\linewidth]{images/DesignPrinciples/DP-esempio15.png}
+    \end{minipage}
+  \end{minipage}
+\end{center}
+
 
 \paragraph{Separation abstract and concrete levels:}  All source code
 dependencies point toward the abstract level. The flow of control crosses the
