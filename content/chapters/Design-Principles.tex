@@ -1,58 +1,323 @@
 \chapter{From design to architecture: Design Principles}
 
-Design principles means follow a clean architecture and a clean architecture means that the 
+Design principles means follow a clean architecture and a clean architecture means that the
 architecture can easily evolve, to be changed.
 
+\section{The SOLID design principles}
+The SOLID principles suggest software architects on how to arrange
+functions and data into groupings (e.g., classes), and how these
+groupings are arranged.
+
+The goal of the SOLID principles is to create mid-level software structures
+(modules) that:
+
+\begin{itemize}
+  \item Are easy to understand
+  \item Allow changes in the most "comfortable" way
+  \item Are the basis of reusable components
+\end{itemize}
+
+\subsection{Single Responsibility Principle - SRP}
+A module should have one, and only one, reason to change. It means
+that a module should be responsible to \textbf{one}, and only one, \textbf{actor}.
 
 
-\section{Liskov Substitution Principle - LSP}
+This is helpful to separate code used by different actors and for a better
+maintenance.
+
+\paragraph{Example}
+
+
+
+\begin{center}
+  \begin{minipage}{\linewidth}
+    \begin{minipage}{0.6\linewidth}
+      \textit{CalculateTax()} is specified by the
+      Finance Department.
+
+      \textit{InsertGrade() }is specified by
+      Students Office and used by
+      Professor
+
+      \textit{VerifyAdmissionCriteria()} is
+      specified and used by Students
+      Office
+
+      \textit{CalculateTax()} and
+      \textit{VerifyAdmission()} share a
+      common algorithm for calculating
+      the average grade.
+    \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
+    \hfill
+    \begin{minipage}{0.40\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{images/DesignPrinciples/DP-esempio1.png}
+    \end{minipage}
+  \end{minipage}
+\end{center}
+
+Changes in \textit{ComputeAverage()} affect two actors: errors may arise and
+also changes to Class Student due to different needs of actors may lead to
+collisions and merges.
+
+\subsubsection{Solution 1: Separate data from functions}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio2.png}
+\end{figure}
+
+\subsubsection{Solution 2: Use the Façade pattern}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio3.png}
+\end{figure}
+
+You increase cupling and complexity, its a trade off.
+But the separation is splitted.
+
+\begin{tcolorbox}
+  \textbf{Note:} You increase cupling and complexity but the separation is splitted.
+\end{tcolorbox}
+
+\subsubsection{Solution 2: variation}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio4.png}
+\end{figure}
+
+\section{Open-Closed Principle - OCP}
+
+A software artifact should be \textbf{open for extension but closed for modification}.
+Using design patterns to make new funcitonality in a way
+that is addictive and not to modify the existing structure.
+
+
+The behavior of a software artifact ought to be extendible, without having to
+modify that artifact.\newline
+
+The aim of OCP is to make the system easy to extend without
+requiring too many changes to the system.
+
+Using the open-closed principle, the software architect divides the
+system into components and arranges these components in a
+dependency hierarchy that protects higher-level components from
+changes in lower-level components.
+
+\paragraph{Example}
+
+A system displays summary information about a student's career at
+the university on a dashboard: Subjects (those passed with grades), Taxes
+paid and due, Current semester schedule, Next exams, Important notices,
+Stakeholders ask for a printed report with only information on
+subjects and taxes, and a different formatting.
+
+
+Generating the report involves two separate responsibilities:
+
+\begin{itemize}
+  \item the calculation of the reported data
+  \item the presentation of that data into a web- and printer-friendly form.
+\end{itemize}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio5.png}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio6.png}
+\end{figure}
+
+
+\subsection{Liskov substitution principle - LSP}
+
+
+\begin{center}
+  \begin{minipage}{\linewidth}
+    \begin{minipage}{0.6\linewidth}
+      If for each object o1 of type S there is an object o2 of type T such that
+      for all programs P defined in terms of T, the behavior of P is
+      unchanged when o1 is substituted for o2 then \textbf{S is a subtype of T}.
+
+    \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
+    \hfill
+    \begin{minipage}{0.40\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{images/DesignPrinciples/DP-esempio7.png}
+    \end{minipage}
+  \end{minipage}
+\end{center}
+
 
 If we substrute o2 vitw o1 and the behavior of p
-does not change means S is derived class of T.
+does not change means S is derived class of T.\newline
 
-S is a subtype od T.
+This principle is about subtyping, not only for inheritance or extension
+but also for the logic, the behavior of the class.
 
-\section{Interface Seggregation Principle - ISP}
+Derived type must fully support the substitution of their base types:
+functions that use pointers or references to base classes must be able
+to use objects of the derived without knowing it. This is related to the
+substitution property.
 
-you shoudnt building interfaces or classes with too many operation
-that are not essential, not used.
+A subtype can replace its supertype only if it behaves the same way.
+This idea, called \textbf{behavioral subtyping}, means the subtype doesn't just
+have the same methods as the supertype — it also follows the same
+rules for how those methods should work. That way, anything the
+client expects from the supertype will also hold true for the subtype.
 
-Similart to SRP we have different actor, that represent diff class
-U1 use only operation1 and U2 use only operation2 and 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio8.png}
+\end{figure}
+
+\begin{center}
+  \begin{minipage}{\linewidth}
+    \begin{minipage}{0.6\linewidth}
+      \begin{minted}{java}
+Rectangle r = ...;
+
+r.setW(5); r.setH(2);
+assert(r.area() == 10);
+      \end{minted}
+    \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
+    \hfill
+    \begin{minipage}{0.40\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{images/DesignPrinciples/SP-esempio9.png}
+    \end{minipage}
+  \end{minipage}
+\end{center}
+
+Depending on how r is defined, the assertion can fail because you not
+use the \textit{setH()} and \textit{setW()} methods of the rectangle but 
+you use the \textit{setSide()} method of the square.
+
+\paragraph{How to refactor it?} Using the Interface segregation principle - ISP
+
+
+\subsection{Interface segregation principle - ISP}
+
+% You shoudnt building interfaces or classes with too many operation
+% that are not essential, not used.
+
+Clients should not be forced to depend on operations and/or interfaces they do
+not use. Better to make fine grained interfaces that are client specific.
+
+Similart to SRP we have different actors, represented by different classes.
+They are onlu interested in a subset of the operations, so we can split the interface in
+U1 use only operation1 and U2 use only operation2 and
 U3 use only operation3
 
-if u wnat to change operation3 you need to redeploy it, 
-it is dangerous.
-Is diff from the SRP we need to modularize better, how?
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio10.png}
+\end{figure}
 
-Inserting interfaces.The classes use the interfaces instead the
+In a statically typed language (e.g., Java), any change to op1() will force
+recompilation and redeployment of User2 and User3.
+
+Is different from the SRP because we need the classes but we need to modularize better.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio11.png}
+\end{figure}
+
+Inserting interfaces the classes use the interfaces instead the
 class and the interface implement the class.
 
-if we change operation1 we impact also user2 and user3, if we
+If we change operation1 we impact also user2 and user3, if we
 change the interface we impact only the corrisponded user.
 
+We also package the interface and the user toghether and this not impact
+the module.
 
----
 
-No class with too much code that is not very used in certains 
-cases.
+Operations are segregated into interfaces.
 
-\section{Dependecy Inversion Principle - DIP}
-You should alwaies have dependecies that lover moduls depends on higher moduls, not the opposite.
-Any concrete class only abstract class or interface, not on concrete class.
+In a statically typed language (e.g., Java), a change to \textit{op1()} will NOT force
+recompilation and redeployment of User2 and User3.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio12.png}
+\end{figure}
+
+Remove useless operations from modules, otherwise they will force
+useless redeployments
+
+\subsection{Dependency inversion principle - DIP}
+You should always have dependencies that lower modules depend on higher modules,
+not the opposite.
+% Any concrete class only abstract class or interface, not on concrete class.
+
+High-level modules should not depend on anything from low-level
+modules.
+
+Stable abstractions: abstractions should not depend on details, so
+that changes to details will not affect them.
+
+\textbf{Idealistic tension}, in practice each system has at least a concrete
+component: the main function
 
 We can make an interface:
 
-App -> service -> concrete class
-App -> iService <- concrete class
+% App -> service -> concrete class
+% App -> iService <- concrete class
 
-We can packeage the app and the interface togheder.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio13.png}
+\end{figure}
 
-We can do something also the factory from the app -> iFactory <- concrete factory -> concrete class -> iService <- app
+Also we can package the app and the interface together.
+
+\subsection{DIP: practical implications}
+
+Dependencies on concretions are tolerable when it comes to
+operating systems, platform facilities and other similar components
+whose changes are tightly controlled and not frequent.
+
+Abstract Factories are helpful to adhere to the DIP by minimizing the
+number of dependencies on concrete implementations and keep
+them separate from the rest of the system
+
+ In general, volatility should be shifted towards implementation details
+without changing interfaces. 
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio14.png}
+\end{figure}
+
+\subsubsection{Using Factory Pattern}
+
+To create an instance of ConcreteImpl, the Application calls \textit{makeService()} from
+IServiceFactory interface, which is implemented by ServiceFactoryImpl class.
+
+ConcreteImpl is created and returned as a IService.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.35\linewidth]{images/DesignPrinciples/DP-esempio15.png}
+\end{figure}
+
+\paragraph{Separation abstract and concrete levels:}  All source code
+dependencies point toward the abstract level. The flow of control crosses the
+separation line in the opposite direction: this is the sense of "dependency
+inversion".
+
+\paragraph{DIP violation}
+DIP violations cannot be entirely removed. Some dependencies on concrete
+implementations are necessary. They must be minimized and kept separate
 
 
 
-  
 
 
 
