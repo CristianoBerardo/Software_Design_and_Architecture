@@ -10,7 +10,7 @@ They look for:
 
 \begin{itemize}
   \item Drive
-  \item Potential 
+  \item Potential
   \item Passion
 \end{itemize}
 
@@ -24,15 +24,13 @@ The processes:
 \end{itemize}
 
 
-\hline
-
 \section{Evernote}
 
 There is a frontend that get the data from bakend at the very high level, but deeper
 the system is very complex and full of components.
 
-Before the acquisition Evernote was a monolith, but after the acquisition 
-they decided to migrate into a set of microservices with each one 
+Before the acquisition Evernote was a monolith, but after the acquisition
+they decided to migrate into a set of microservices with each one
 thake care of a specific element.
 
 All of there service shoudl minimize the dependecies with the other services.
@@ -67,17 +65,17 @@ Note creation:
 
 \subsubsection{Client connection}
 Fernando autenticate withe the websocket and then connect to sycn service.
-This service has tons of persistent connection always open, it use a 
-multi-map, because of multiple devices but same user, to keep track of 
+This service has tons of persistent connection always open, it use a
+multi-map, because of multiple devices but same user, to keep track of
 the connection and the user id.
 
 
 The persistent connection can go offline for a bit. Do they loose all the
 message? Yes but the sync service use google cloud datastore.
-It is a single schema with the UId, the Instance with every metadata of 
+It is a single schema with the UId, the Instance with every metadata of
 Fernando and SyncOperation with the operation performed (CREATE, UPDATE, DELETE).
 
-Every time the client receaves some message, it reaceve the userId and 
+Every time the client receaves some message, it reaceve the userId and
 the timestamp and this is used in the google cloud datastore.
 
 \begin{minted}[breaklines]{sql}
@@ -99,7 +97,7 @@ But also some drawsbacks:
 
 \begin{itemize}
   \item Data duplication
-  \item Integration difficulty  
+  \item Integration difficulty
   \item Complexity
 \end{itemize}
 
