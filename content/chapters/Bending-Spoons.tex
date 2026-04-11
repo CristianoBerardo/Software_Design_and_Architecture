@@ -1,0 +1,109 @@
+\section{Bending Spoons seminary (Evernote)}
+
+Founded in 2013 in Danmark.
+They acquire digital products then unlock the potential of the products.
+
+
+500+ TB data processed per year. Constantly search for new talent.
+
+They look for:
+
+\begin{itemize}
+  \item Drive
+  \item Potential 
+  \item Passion
+\end{itemize}
+
+The processes:
+
+\begin{itemize}
+  \item Screening
+  \item Tasks
+  \item Interviews
+  \item Final decision
+\end{itemize}
+
+
+\hline
+
+\section{Evernote}
+
+There is a frontend that get the data from bakend at the very high level, but deeper
+the system is very complex and full of components.
+
+Before the acquisition Evernote was a monolith, but after the acquisition 
+they decided to migrate into a set of microservices with each one 
+thake care of a specific element.
+
+All of there service shoudl minimize the dependecies with the other services.
+
+But the backend is not the complex part of the system.
+
+\subsection{Evernote's sync system}
+
+Legacy: "Monolith have you some new content?" "Yes, the note with the monkey"
+This is a polling request useless for the user and for the backend system.
+
+
+Microservices: Persistent connection between the client and the server, faster
+then polling, cheaper for both:  the client side save battery and for
+the server side save CPU and bandwidth.
+
+
+\subsubsection{Deep dive into sync activity}
+
+Note creation:
+
+
+\begin{itemize}
+  \item The phone perform an http request to the backend to note service
+  \item Performing some checks
+  \item Create the json file SQL database
+  \item Note create message to the sync service queue
+  \item The sync service send the message to the all the client devices with the new note
+\end{itemize}
+
+
+
+\subsubsection{Client connection}
+Fernando autenticate withe the websocket and then connect to sycn service.
+This service has tons of persistent connection always open, it use a 
+multi-map, because of multiple devices but same user, to keep track of 
+the connection and the user id.
+
+
+The persistent connection can go offline for a bit. Do they loose all the
+message? Yes but the sync service use google cloud datastore.
+It is a single schema with the UId, the Instance with every metadata of 
+Fernando and SyncOperation with the operation performed (CREATE, UPDATE, DELETE).
+
+Every time the client receaves some message, it reaceve the userId and 
+the timestamp and this is used in the google cloud datastore.
+
+\begin{minted}[breaklines]{sql}
+SELECT * FROM sync_documents
+WHERE accessInfo.updated >= "1259414" and accessInfo.userId = "12345"
+
+\end{minted}
+
+The sync service have some pros:
+
+\begin{itemize}
+  \item Fast updates
+  \item Offline access
+  \item Cheap
+\end{itemize}
+
+
+But also some drawsbacks:
+
+\begin{itemize}
+  \item Data duplication
+  \item Integration difficulty  
+  \item Complexity
+\end{itemize}
+
+
+
+
+
