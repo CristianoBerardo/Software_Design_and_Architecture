@@ -144,7 +144,7 @@ one-to-many interaction styles
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.6}
   \centering
-  \begin{tabular}{l l}
+  \begin{tabularx}{0.75\textwidth}{X X}
     \toprule
     \textbf{Pros}                      & \textbf{Cons}                                                 \\
     \midrule
@@ -152,7 +152,7 @@ one-to-many interaction styles
     No centralized point of failure    & Reduced availability, both must be available at the same time \\
     Simplicity                         & Hard to have guaranteed delivery                              \\
     \bottomrule
-  \end{tabular}
+  \end{tabularx}
 \end{table}
 
 
@@ -163,7 +163,7 @@ Broker is an intermediary components through which all messages flow.
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.6}
   \centering
-  \begin{tabular}{l l}
+  \begin{tabularx}{0.75\textwidth}{X X}
     \toprule
     \textbf{Pros}                                                               & \textbf{Cons}                    \\
     \midrule
@@ -171,8 +171,9 @@ Broker is an intermediary components through which all messages flow.
                                                                                 & Single point of failure          \\
                                                                                 & Additional complexity            \\
     \bottomrule
-  \end{tabular}
+  \end{tabularx}
 \end{table}
+
 
 
 \subsection{Broker characteristics}
@@ -200,7 +201,7 @@ events that trigger local transactions in
 other services.
 
 \begin{flushleft}
-  \begin{minipage}{0.65\linewidth}
+  \begin{minipage}{0.55\linewidth}
     \raggedright
     \begin{itemize}
       \item It requires reliable message infrastructure and messages with correlation id.
@@ -210,7 +211,7 @@ other services.
     \end{itemize}
   \end{minipage}%
   \hfill
-  \begin{minipage}{0.3\linewidth}
+  \begin{minipage}{0.37\linewidth}
     \centering
     \includegraphics[width=\linewidth]{content/chapters/images/2026-04-11-11-16-28.png}
   \end{minipage}
