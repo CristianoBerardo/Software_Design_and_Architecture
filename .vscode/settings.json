@@ -73,5 +73,5 @@
   ],
   "pasteImage.showFilePathConfirmInputBox": true,
   "pasteImage.path": "${currentFileDir}/images",
-  "pasteImage.insertPattern": "\\begin{figure}[h!]\n\t\\centering\n\t\\includegraphics[width=\\linewidth]{${imageFilePath}}\n\\end{figure}"
+  "pasteImage.insertPattern": "\\begin{figure}[h!]\n\t\\centering\n\t\\includegraphics[width=\\linewidth]{content/chapters/${imageFilePath}}\n\\end{figure}"
 }
