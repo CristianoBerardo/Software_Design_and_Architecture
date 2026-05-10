@@ -19,7 +19,7 @@ external, in use, data) and process quality.
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=\linewidth]{content/chapters/images/2026-05-09-15-12-00.png}
+  \includegraphics[width=0.25\linewidth]{content/chapters/images/2026-05-09-15-12-00.png}
 \end{figure}
 
 \section{Target entities}
@@ -28,7 +28,7 @@ complex information system
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=\linewidth]{content/chapters/images/2026-05-09-15-12-58.png}
+  \includegraphics[width=0.25\linewidth]{content/chapters/images/2026-05-09-15-12-58.png}
 \end{figure}
 
 \subsection{Model structure}
@@ -118,12 +118,12 @@ contexts of use, or system environment: adaptability, installability, replaceabi
   \centering
   \begin{tabularx}{0.75\textwidth}{X X}
     \toprule
-    \textbf{ID}          & \textbf{UEp-1-G}                                                                                                                                     \\
+    \textbf{ID}          & \textbf{UEp-1-G}                                                                                                                                       \\
     \midrule
-    Name                 & Avoidance of user operation error                                                                                                                    \\
-    Description          & What portion of user actions and inputs are protected against causing any system malfunction?                                                        \\
-    Measurement function & X = A/B, where A = # user actions and inputs protected against causing any system malfunction; B = # user actions and inputs that could be protected \\
-    Interpretation       & $0 \leq X \leq 1$ The closer to 1 the better                                                                                                         \\
+    Name                 & Avoidance of user operation error                                                                                                                      \\
+    Description          & What portion of user actions and inputs are protected against causing any system malfunction?                                                          \\
+    Measurement function & X = A/B, where A = \# user actions and inputs protected against causing any system malfunction; B = \# user actions and inputs that could be protected \\
+    Interpretation       & $0 \leq X \leq 1$ The closer to 1 the better                                                                                                           \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -135,12 +135,12 @@ contexts of use, or system environment: adaptability, installability, replaceabi
   \centering
   \begin{tabularx}{0.75\textwidth}{X X}
     \toprule
-    \textbf{ID}          & \textbf{RMa-1-G}                                                                                                                                           \\
+    \textbf{ID}          & \textbf{RMa-1-G}                                                                                                                                             \\
     \midrule
-    Name                 & Test coverage                                                                                                                                              \\
-    Description          & How much of the required test cases has been executed during testing?                                                                                      \\
-    Measurement function & X = A/B, where A = #  test cases actually performed representing operation scenario during testing; B = # test cases to be performed to cover requirements \\
-    Interpretation       & $0 \leq X \leq 1$ The closer to 1 the better                                                                                                               \\
+    Name                 & Test coverage                                                                                                                                                \\
+    Description          & How much of the required test cases has been executed during testing?                                                                                        \\
+    Measurement function & X = A/B, where A = \#  test cases actually performed representing operation scenario during testing; B = \# test cases to be performed to cover requirements \\
+    Interpretation       & $0 \leq X \leq 1$ The closer to 1 the better                                                                                                                 \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -152,12 +152,12 @@ contexts of use, or system environment: adaptability, installability, replaceabi
   \centering
   \begin{tabularx}{0.75\textwidth}{X X}
     \toprule
-    \textbf{ID}          & \textbf{MMo-2-S}                                                                                                                                                                                                                                                             \\
+    \textbf{ID}          & \textbf{MMo-2-S}                                                                                                                                                                                                                                                               \\
     \midrule
-    Name                 & Cyclomatic Complexity                                                                                                                                                                                                                                                        \\
-    Description          & How many software modules have the acceptable cyclomatic complexity?                                                                                                                                                                                                         \\
-    Measurement function & X = A/B, where A = #  of software modules which have the cyclomatic complexity exceeds a threshold; B = # of software modules in a product. Threshold is defined by each project or organization and is possibly diﬀerent value by a programming language, or type of module \\
-    Interpretation       & $0 \leq X \leq 1$ The closer to 1 the better                                                                                                                                                                                                                                 \\
+    Name                 & Cyclomatic Complexity                                                                                                                                                                                                                                                          \\
+    Description          & How many software modules have the acceptable cyclomatic complexity?                                                                                                                                                                                                           \\
+    Measurement function & X = A/B, where A = \#  of software modules which have the cyclomatic complexity exceeds a threshold; B = \# of software modules in a product. Threshold is defined by each project or organization and is possibly diﬀerent value by a programming language, or type of module \\
+    Interpretation       & $0 \leq X \leq 1$ The closer to 1 the better                                                                                                                                                                                                                                   \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -194,12 +194,12 @@ contexts of use, or system environment: adaptability, installability, replaceabi
   \centering
   \begin{tabularx}{0.75\textwidth}{X X}
     \toprule
-    \textbf{ID}           & \textbf{MMo-2-S}                                                                                                     \\
+    \textbf{ID}           & \textbf{MMo-2-S}                                                                                                      \\
     \midrule
-    Purpose               & Cyclomatic Complexity                                                                                                \\
-    Method of application & How many software modules have the acceptable cyclomatic complexity?                                                 \\
-    Definition            & $M1 = | 1 - \sum A_i|$, where $A_i$ = # Proportional value of each missing or incorrect component in the task output \\
-    Interpretation        & $0 \leq M1 \leq 1$ The closer to 1 the better                                                                        \\
+    Purpose               & Cyclomatic Complexity                                                                                                 \\
+    Method of application & How many software modules have the acceptable cyclomatic complexity?                                                  \\
+    Definition            & $M1 = | 1 - \sum A_i|$, where $A_i$ = \# Proportional value of each missing or incorrect component in the task output \\
+    Interpretation        & $0 \leq M1 \leq 1$ The closer to 1 the better                                                                         \\
     \bottomrule
   \end{tabularx}
 \end{table}

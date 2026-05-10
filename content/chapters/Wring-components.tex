@@ -40,7 +40,7 @@ execution and calls your code at the appropriate time.
 \paragraph{Example of direct control}
 
 \begin{center}
-  \begin{minipage}{0.45\linewidth}
+  \begin{minipage}{0.65\linewidth}
     \begin{minted}[breaklines]{java}
 void main() throws IOException{
   Path path = Path.of("data/grades.csv");
@@ -57,7 +57,7 @@ void main() throws IOException{
 \end{minted}
   \end{minipage}%
   \hfill
-  \begin{minipage}{0.45\linewidth}
+  \begin{minipage}{0.3\linewidth}
     \centering
     \includegraphics[width=\linewidth]{content/chapters/images/2026-03-27-10-28-11.png}
     \captionof{figure}{Call diagram}
@@ -68,7 +68,7 @@ void main() throws IOException{
 \paragraph{Example of inverted control}
 
 \begin{center}
-  \begin{minipage}{0.45\linewidth}
+  \begin{minipage}{0.65\linewidth}
     \begin{minted}[breaklines]{java}
 void main() throws IOException{
   CsvReader reader = new CsvReader();
@@ -82,7 +82,7 @@ void main() throws IOException{
 \end{minted}
   \end{minipage}%
   \hfill
-  \begin{minipage}{0.45\linewidth}
+  \begin{minipage}{0.3\linewidth}
     \centering
     \includegraphics[width=\linewidth]{content/chapters/images/2026-03-27-10-31-01.png}
     \captionof{figure}{Call diagram}
@@ -181,7 +181,7 @@ Move the logic of creating into an \textit{Assembler} class
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=\linewidth]{content/chapters/images/2026-03-27-11-04-05.png}
+  \includegraphics[width=0.3\linewidth]{content/chapters/images/2026-03-27-11-04-05.png}
 \end{figure}
 
 
@@ -421,7 +421,7 @@ Replace Direct call with a Broker
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=\linewidth]{content/chapters/images/2026-03-27-11-34-23.png}
+  \includegraphics[width=0.3\linewidth]{content/chapters/images/2026-03-27-11-34-23.png}
 \end{figure}
 
 In this case sender does NOT know:
