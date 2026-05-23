@@ -44,7 +44,7 @@ Make use of SOLID principles and Component principles.
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-05-05-18-04-48.png}
+    \includegraphics[width=0.8\linewidth]{content/chapters/images/2026-05-05-18-04-48.png}
   \end{minipage}
 \end{flushleft}
 
@@ -87,7 +87,7 @@ Two type of layers: Horizontal (DB, UI, etc.) and Vertical (Source code units, s
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
-    \includegraphics[width=0.3\linewidth]{content/chapters/images/2026-05-05-18-07-45.png}
+    \includegraphics[width=0.2\linewidth]{content/chapters/images/2026-05-05-18-07-45.png}
   \end{minipage}
 \end{flushleft}
 
@@ -116,7 +116,7 @@ Rules mught be violated.
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
-    \includegraphics[width=0.6\linewidth]{content/chapters/images/2026-05-05-18-15-15.png}
+    \includegraphics[width=0.5\linewidth]{content/chapters/images/2026-05-05-18-15-15.png}
   \end{minipage}
 \end{center}
 
@@ -138,7 +138,7 @@ Rules mught be violated.
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
-    \includegraphics[width=0.6\linewidth]{content/chapters/images/2026-05-05-18-15-45.png}
+    \includegraphics[width=0.5\linewidth]{content/chapters/images/2026-05-05-18-15-45.png}
   \end{minipage}
 \end{center}
 
@@ -188,22 +188,28 @@ card readers in some department accesses.  A red or green light on the reader wi
 
 
 \section{Layers}
+\begin{flushleft}
+  \begin{minipage}{0.65\linewidth}
+    \raggedright
 
-The most basic components of a system are:
-\begin{itemize}
-  \item User Interface (UI)
-  \item Application Logic
-  \item Database
-\end{itemize}
+    The most basic components of a system are:
+    \begin{itemize}
+      \item User Interface (UI)
+      \item Application Logic
+      \item Database
+    \end{itemize}
 
-\paragraph{Example: a word processor}
-A word processor (WP) is a device or software for creating, editing,
-storing, and printing text documents.
+    \paragraph{Example: a word processor}
+    A word processor (WP) is a device or software for creating, editing,
+    storing, and printing text documents.
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{content/chapters/images/2026-05-05-18-29-33.png}
+  \end{minipage}
+\end{flushleft}
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.3\linewidth]{content/chapters/images/2026-05-05-18-29-33.png}
-\end{figure}
 
 \section{Test}
 
@@ -222,42 +228,59 @@ volatile elements.
 Example: business rules should be tested without using the GUI.
 Specific tests API can avoid constraints (e.g. security).
 
-\subsection{Humble objects}
 
-The Humble Object helps unit testers to separate behaviors that are
-hard to test from behaviors that are easy to test.
-It is adopted in software architecture to identify and protect
-architectural boundaries.
+\begin{flushleft}
+  \begin{minipage}{0.65\linewidth}
+    \raggedright
+    \subsection{Humble objects}
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.25\linewidth]{content/chapters/images/2026-05-05-18-46-54.png}
-\end{figure}
-Esample are: Database gateways, Data mappers and Service listeners.
+    The Humble Object helps unit testers to separate behaviors that are
+    hard to test from behaviors that are easy to test.
+    It is adopted in software architecture to identify and protect
+    architectural boundaries.
+
+    Esample are: Database gateways, Data mappers and Service listeners.
+
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{content/chapters/images/2026-05-05-18-46-54.png}
+  \end{minipage}
+\end{flushleft}
+
 
 
 \section{Architectural styles}
 
-Examples of SPG/order.
 
-Use case: customers should be able to view the status of their orders
 
-Classes:
+\begin{flushleft}
+  \begin{minipage}{0.65\linewidth}
+    \raggedright
+    Examples of SPG/order.
 
-\begin{itemize}
-  \item OrdersController: web controller (e.g. Spring MVC controller) to handle requests from the web.
-  \item OrdersService: interface that defines the logic related to orders.
-  \item OrdersServiceImpl: The implementation of the orders service.
-  \item OrdersRepository: An interface that defines how we get access to persistent order information
-  \item JdbcOrdersRepository: An implementation of the repository interface.
-\end{itemize}
+    Use case: customers should be able to view the status of their orders
 
-option could be Package by layer or feature or component, Ports and Adapters
+    Classes:
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.3\linewidth]{content/chapters/images/2026-05-05-18-50-31.png}
-\end{figure}
+    \begin{itemize}
+      \item OrdersController: web controller (e.g. Spring MVC controller) to handle requests from the web.
+      \item OrdersService: interface that defines the logic related to orders.
+      \item OrdersServiceImpl: The implementation of the orders service.
+      \item OrdersRepository: An interface that defines how we get access to persistent order information
+      \item JdbcOrdersRepository: An implementation of the repository interface.
+    \end{itemize}
+
+    option could be Package by layer or feature or component, Ports and Adapters
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{content/chapters/images/2026-05-05-18-50-31.png}
+  \end{minipage}
+\end{flushleft}
+
 
 \subsection{Package by layer}
 
@@ -316,28 +339,5 @@ Reusable set of structural principles and high-level design decisions on:
   \item Data topology: monolithic database/separate data
   \item Team topologies: remember Conway's law
 \end{itemize}
-
-\textbf{Monolithic} = single deployment unit of all code
-
-\textbf{Distributed} = multiple deployment units connected through remote
-access protocols
-
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.5\linewidth]{content/chapters/images/2026-05-05-18-55-22.png}
-\end{figure}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
