@@ -63,42 +63,34 @@ also changes to Class Student due to different needs of actors may lead to
 collisions and merges.
 
 
-\begin{flushleft}
-  \begin{minipage}{0.7\linewidth}
-    \begin{minipage}[t]{0.45\linewidth}
-      \paragraph{Solution 1: Separate data from functions}
-      \centering
+\begin{center}
+  \begin{minipage}[t]{0.32\linewidth}
+    \raggedright
+    \paragraph{Solution 1: Separate data from functions}
+    \centering
+    \includegraphics[width=\linewidth]{images/DesignPrinciples/DP-esempio2.png}
+  \end{minipage}%
+  \hfill%
+  \begin{minipage}[t]{0.32\linewidth}
+    \raggedright
+    \paragraph{Solution 2: Use the Façade pattern}
+    \centering
+    \includegraphics[width=\linewidth]{images/DesignPrinciples/DP-esempio3.png}
 
-
-      \includegraphics[width=\linewidth]{images/DesignPrinciples/DP-esempio2.png}
-
-    \end{minipage}%
-    \hfill
-    \begin{minipage}[t]{0.45\linewidth}
-
-      \paragraph{Solution 2: Use the Façade pattern}
-      You increase cupling and complexity, its a trade off, but the separation is splitted.
-      \centering
-      \includegraphics[width=\linewidth]{images/DesignPrinciples/DP-esempio3.png}
-
-    \end{minipage}
+    You increase coupling and complexity, its a trade off, but the separation is splitted.
+  \end{minipage}%
+  \hfill%
+  \begin{minipage}[t]{0.32\linewidth}
+    \raggedright
+    \paragraph{Solution 2: variation}
+    \centering
+    \includegraphics[width=\linewidth]{images/DesignPrinciples/DP-esempio4.png}
   \end{minipage}
-\end{flushleft}
-
-
-
-
+\end{center}
 
 \begin{tcolorbox}
   \textbf{Note:} You increase cupling and complexity but the separation is splitted.
 \end{tcolorbox}
-
-\subsubsection{Solution 2: variation}
-
-\begin{figure}[htbp!]
-  \centering
-  \includegraphics[width=0.25\linewidth]{images/DesignPrinciples/DP-esempio4.png}
-\end{figure}
 
 
 \section{Open-Closed Principle - OCP}
@@ -165,7 +157,7 @@ requiring too many changes to the system.
     \hfill
     \begin{minipage}{0.35\linewidth}
       \centering
-      \includegraphics[width=\linewidth]{images/DesignPrinciples/DP-esempio7.png}
+      \includegraphics[width=0.75\linewidth]{images/DesignPrinciples/DP-esempio7.png}
     \end{minipage}
   \end{minipage}
 \end{center}
@@ -246,7 +238,7 @@ you use the \textit{setSide()} method of the square.
     \hfill
     \begin{minipage}{0.35\linewidth}
       \centering
-      \includegraphics[width=0.85\linewidth]{images/DesignPrinciples/DP-esempio10.png}
+      \includegraphics[width=0.5\linewidth]{images/DesignPrinciples/DP-esempio10.png}
     \end{minipage}
   \end{minipage}
 \end{center}
@@ -314,7 +306,7 @@ useless redeployments
     \hfill
     \begin{minipage}{0.3\linewidth}
       \centering
-      \includegraphics[width=0.85\linewidth]{images/DesignPrinciples/DP-esempio13.png}
+      \includegraphics[width=0.75\linewidth]{images/DesignPrinciples/DP-esempio13.png}
     \end{minipage}
   \end{minipage}
 \end{center}
@@ -399,7 +391,7 @@ DIP violations cannot be entirely removed. Some dependencies on concrete
 implementations are necessary. They must be minimized and kept separate
 
 
-\section{How to compile and see the UML}
+\paragraph{How to compile and see the UML}
 \verb|mvn -f .\Path\to\pom_file\pom.xml clean compile site|
 
 Then Java Project > Target > site > index.html
