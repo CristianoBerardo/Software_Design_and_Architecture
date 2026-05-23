@@ -27,10 +27,7 @@ to focus on higher-level features.
 
 \subsection{Inversion of control}
 
-\begin{quote}
-  \centering
-  "Don't call us, we'll call you"
-\end{quote}
+\textbf{"Don't call us, we'll call you}"
 
 
 With inversion of control, you code does not control the
@@ -59,7 +56,7 @@ void main() throws IOException{
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-03-27-10-28-11.png}
+    \includegraphics[width=0.4\linewidth]{content/chapters/images/2026-03-27-10-28-11.png}
     \captionof{figure}{Call diagram}
   \end{minipage}
 \end{center}
@@ -84,7 +81,7 @@ void main() throws IOException{
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-03-27-10-31-01.png}
+    \includegraphics[width=0.4\linewidth]{content/chapters/images/2026-03-27-10-31-01.png}
     \captionof{figure}{Call diagram}
   \end{minipage}
 \end{center}
@@ -92,8 +89,7 @@ void main() throws IOException{
 
 \subsection{Patterns that enable inversion of control}
 
-The \textbf{Template method}, the \textbf{Strategy pattern}, and the \textbf{Observer pattern}
-are design patterns that enable inversion of control.
+\textbf{Template method} - \textbf{Strategy pattern} - \textbf{Observer pattern}
 
 
 \section{Wiring components}
@@ -170,20 +166,23 @@ To solve the problem of dependencies, we can use 3 techniques for decoupling com
 
 \subsection{Dependency injection}
 
-The \textit{ThesisLister} calasss id dependent on both the \textit{ThesisFinder} interace and
-the implementation of \textit{ThesisFinderImpl}.
+\begin{center}
+  \begin{minipage}{0.65\linewidth}
+    The \textit{ThesisLister} calasss id dependent on both the \textit{ThesisFinder} interace and
+    the implementation of \textit{ThesisFinderImpl}.
 
-The goal of dependency injection is make the lister class unaware of the implementation class,
-but can still talk to an instance to do its work.
+    The goal of dependency injection is make the lister class unaware of the implementation class,
+    but can still talk to an instance to do its work.
 
 
-Move the logic of creating into an \textit{Assembler} class
-
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.3\linewidth]{content/chapters/images/2026-03-27-11-04-05.png}
-\end{figure}
-
+    Move the logic of creating into an \textit{Assembler} class
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{content/chapters/images/2026-03-27-11-04-05.png}
+  \end{minipage}
+\end{center}
 
 How to perfome the injection? Two tecniques:
 
@@ -198,16 +197,27 @@ How to perfome the injection? Two tecniques:
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=0.3\linewidth]{content/chapters/images/2026-03-27-11-13-04.png}
 \end{figure}
 
+\begin{flushleft}
+  \begin{minipage}{0.65\linewidth}
+    \raggedright
+    \paragraph{Basic injection}
 
-\paragraph{Basic injection}
-
-\begin{minted}[breaklines]{java}
+    \begin{minted}[breaklines]{java}
 ThesisFinder finder = new ThesisFinderImpl(``theses.csv''); //creates the implementation with parameters
 ThesisLister lister = new ThesisLister(finder); //injects the dependency upon construction
 \end{minted}
+
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{content/chapters/images/2026-03-27-11-13-04.png}
+  \end{minipage}
+\end{flushleft}
+
+
 
 \paragraph{Constructor injection with container}
 
@@ -247,22 +257,28 @@ public class ThesisLister {
 
 \subsection{Setter injection}
 
-Instead of using the constructor we can use a setter method to inject the dependencies.
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.3\linewidth]{content/chapters/images/2026-03-27-11-17-52.png}
-\end{figure}
+\begin{flushleft}
+  \begin{minipage}{0.65\linewidth}
+    \raggedright
+    Instead of using the constructor we can use a setter method to inject the dependencies.
 
-\paragraph{Basic injection}
 
-\begin{minted}[breaklines]{java}
+    \paragraph{Basic injection}
+
+    \begin{minted}[breaklines]{java}
 ThesisFinderImpl finder = new ThesisFinderImpl(); //creates the server object
 finder. setFile("theses.csv");  //set the parameter
 ThesisLister lister = new ThesisLister()  //creates the client
 lister.setFinder(finder); //injects the dependency with the setter
 \end{minted}
-
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{content/chapters/images/2026-03-27-11-17-52.png}
+  \end{minipage}
+\end{flushleft}
 
 To set up a setting injection we can use a confriguation file.
 
@@ -331,9 +347,9 @@ public class ThesisLister {
 
 
 \begin{table}[h!]
-  \renewcommand{\arraystretch}{1.4}
+  \renewcommand{\arraystretch}{1.3}
   \centering
-  \begin{tabularx}{\textwidth}{XXX}
+  \begin{tabularx}{\textwidth}{lll}
     \hline
     \textbf{Criterion}    & \textbf{Constructor}                              & \textbf{Setter}                                  \\
     \hline
@@ -352,25 +368,20 @@ public class ThesisLister {
 \section{Service locator}
 
 
-\begin{center}
+
+\begin{flushleft}
   \begin{minipage}{0.65\linewidth}
+    \raggedright
+
     A service locator is an object that knows how to get hold of all
     of the services that an application might need.
 
     It is an alternative to dependency injection to break the
     dependencies.
 
-  \end{minipage}%
-  \hfill
-  \begin{minipage}{0.3\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-03-27-11-28-56.png}
-  \end{minipage}
-\end{center}
+    \paragraph{Example of locator service}
 
-
-\paragraph{Example of locator service}
-\begin{minted}[breaklines]{java}
+    \begin{minted}[breaklines]{java}
 public class ThesisLister {
   public static String FINDER_SVC="thesis-finder";
   private final ThesisFinder thesisFinder;
@@ -381,6 +392,14 @@ public class ThesisLister {
 //...
 }
 \end{minted}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{content/chapters/images/2026-03-27-11-28-56.png}
+  \end{minipage}
+\end{flushleft}
+
 
 \paragraph{Basic assembler}
 
@@ -395,9 +414,9 @@ ThesisLister thesisLister = new ThesisLister();
 
 
 \begin{table}[h!]
-  \renewcommand{\arraystretch}{1.4}
+  \renewcommand{\arraystretch}{1.3 }
   \centering
-  \begin{tabularx}{\textwidth}{XXX}
+  \begin{tabularx}{\textwidth}{lll}
     \hline
     \textbf{Criterion}           & \textbf{Service Locator}              & \textbf{Dependency Injection}           \\
     \hline
@@ -414,30 +433,28 @@ ThesisLister thesisLister = new ThesisLister();
   \end{tabularx}
 \end{table}
 
-
 \section{Messages/Events}
 
-Replace Direct call with a Broker
+\begin{center}
+  \begin{minipage}{0.65\linewidth}
+    Replace Direct call with a Broker
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{content/chapters/images/2026-03-27-11-34-23.png}
+  \end{minipage}
+\end{center}
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.3\linewidth]{content/chapters/images/2026-03-27-11-34-23.png}
-\end{figure}
 
-In this case sender does NOT know:
-
-\begin{itemize}
-  \item Who consumes the message
-  \item When the message is processed
-  \item How many consumers exist
-\end{itemize}
+In this case sender does NOT know:  Who consumes the message, When the message is processed, How many consumers exist
 
 \subsection{Roles: Producer, Consumer}
 
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{\textwidth}{X X}
+  \begin{tabular}{ll}
     \hline
     \textbf{Producer}            & \textbf{Consumer}       \\
     \hline
@@ -445,7 +462,7 @@ In this case sender does NOT know:
     Does not wait for processing & Processes independently \\
     Does not know consumers      & Can scale horizontally  \\
     \hline
-  \end{tabularx}
+  \end{tabular}
 \end{table}
 
 
@@ -470,7 +487,7 @@ It is possible to configure different levels of delivery guarantees depending on
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{\textwidth}{X X}
+  \begin{tabular}{l l}
     \hline
     \textbf{Type} & \textbf{Meaning}                             \\
     \hline
@@ -478,7 +495,7 @@ It is possible to configure different levels of delivery guarantees depending on
     At least once & messages may be duplicated, need idempotency \\
     Exactly once  & delivery guarantees, expensive               \\
     \hline
-  \end{tabularx}
+  \end{tabular}
 \end{table}
 
 
@@ -492,11 +509,8 @@ factory.setHost("localhost");
 
 try (Connection connection = factory. newConnection();
 Channel channel = connection. createChannel() ) {
-
   channel.queueDeclare("orders", false, false, false, null);
-
   String message = "New Order: 123";
-
   channel.basicPublish("", "orders", null, message.getBytes());
   System.out.println("Sent: " + message);
 }
@@ -506,17 +520,13 @@ Channel channel = connection. createChannel() ) {
 \begin{minted}[breaklines]{java}
 ConnectionFactory factory = new ConnectionFactory();
 factory.setHost("localhost");
-
 Connection connection = factory.newConnection();
 Channel channel = connection. createChannel();
-
 channel.queueDeclare("orders", false, false, false, null);
-
 DeliverCallback callback = (tag, delivery) -> {
   String message = new String(delivery.getBody());
   System.out.println("Received: " + message);
 };
-
 channel.basicConsume("orders", true, callback, tag -> {});
 \end{minted}
 
@@ -530,7 +540,7 @@ Producer and consumer are independent processes, they can run on diﬀerent mach
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{\textwidth}{X X}
+  \begin{tabular}{ll}
     \hline
     \textbf{Queue}             & \textbf{Topic}                 \\
     \hline
@@ -538,7 +548,7 @@ Producer and consumer are independent processes, they can run on diﬀerent mach
     Work distribution          & Event broadcast                \\
     Load balancing             & Publish/subscribe              \\
     \hline
-  \end{tabularx}
+  \end{tabular}
 \end{table}
 
 
@@ -571,23 +581,33 @@ Is a database just storage, or is it a communication mechanism?
 Communication via mutations of shared, persistent state. The components
 communicate by reading and writing a common data store, no explicit message passing.
 
-\paragraph{Shared state examples}
+\begin{flushleft}
+  \begin{minipage}{0.47\linewidth}
+    \raggedright
+    \paragraph{Shared state examples}
 
-\begin{itemize}
-  \item In-memory global variables
-  \item Shared files
-  \item Shared database
-  \item Distributed cache (Redis)
-\end{itemize}
+    \begin{itemize}
+      \item In-memory global variables
+      \item Shared files
+      \item Shared database
+      \item Distributed cache (Redis)
+    \end{itemize}
 
-\subsubsection{Communication patterns}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.47\linewidth}
+    \raggedright
+    \subsubsection{Communication patterns}
 
-\begin{itemize}
-  \item State-based signaling
-  \item Polling
-  \item Work queue
-  \item Derived state sharing
-\end{itemize}
+    \begin{itemize}
+      \item State-based signaling
+      \item Polling
+      \item Work queue
+      \item Derived state sharing
+    \end{itemize}
+  \end{minipage}
+\end{flushleft}
+
 
 \subsection{Effects}
 \begin{itemize}
@@ -601,7 +621,7 @@ communicate by reading and writing a common data store, no explicit message pass
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{\textwidth}{XXX}
+  \begin{tabular}{lll}
     \hline
     \textbf{Aspect} & \textbf{Shared DB}          & \textbf{In-memory Cache (Redis)} \\
     \hline
@@ -610,7 +630,7 @@ communicate by reading and writing a common data store, no explicit message pass
     Consistency     & Strong                      & Config-dependent                 \\
     Visibility      & High (queryable history)    & Low (state disappears)           \\
     \hline
-  \end{tabularx}
+  \end{tabular}
 \end{table}
 
 
