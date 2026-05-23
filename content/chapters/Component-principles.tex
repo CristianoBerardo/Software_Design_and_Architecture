@@ -48,7 +48,7 @@ initial identification:
 \end{itemize}
 
 
-\subsubsection{SPG requirements}
+\paragraph{SPG requirements}
 
 A neighborhood association manages a Solidarity Purchasing Group
 (SPG). Every Monday, a farm (rotating among a pool of reference
@@ -62,37 +62,48 @@ SPG members receive an email with the list of available products and
 can place their orders either via the website or by visiting the
 association's headquarters.\newline
 
-When ordering, SPG members specify the types of vegetables they
-want and the quantities (expressed in kilos, packs, or boxes
-depending on the type of fruit or vegetable ordered). If the order is
-placed at the association's headquarters, the member pays
-immediately.\newline
-
-At the end of the week, the farm delivers the products to the
-association's headquarters. Shop employees record the delivery, and
-members receive a notification when their ordered goods arrive. At
-this point, members can go to the association to collect the package
-(paying at the same time, if not done at the time of ordering).
 
 
-\begin{table}[htbp]
-  \renewcommand{\arraystretch}{1.4}
-  \centering
-  \begin{tabular}{ll}
-    \textbf{Macro functionality} & \textbf{Component} \\
 
-    \hline
-    Insert products              & Product submission \\
-    View products                & Product browser    \\
-    Order products               & Order placement    \\
-    Buy products                 & Order Payment      \\
-  \end{tabular}
-\end{table}
+\begin{flushleft}
+  \begin{minipage}{0.55\linewidth}
 
 
-\subsubsection{Workflow approach}
+    When ordering, SPG members specify the types of vegetables they
+    want and the quantities (expressed in kilos, packs, or boxes
+    depending on the type of fruit or vegetable ordered). If the order is
+    placed at the association's headquarters, the member pays
+    immediately.\newline
 
-\begin{table}[htbp]
+    At the end of the week, the farm delivers the products to the
+    association's headquarters. Shop employees record the delivery, and
+    members receive a notification when their ordered goods arrive. At
+    this point, members can go to the association to collect the package
+    (paying at the same time, if not done at the time of ordering).
+  \end{minipage}%
+  \hfill%
+  \begin{minipage}{0.40\linewidth}
+    \vspace{0pt}
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{ll}
+      \textbf{Macro functionality} & \textbf{Component} \\
+
+      \hline
+      Insert products              & Product submission \\
+      View products                & Product browser    \\
+      Order products               & Order placement    \\
+      Buy products                 & Order Payment      \\
+    \end{tabular}
+  \end{minipage}
+\end{flushleft}
+
+
+
+
+\paragraph{Workflow approach}
+
+\begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
   \begin{tabular}{ll}
@@ -113,32 +124,35 @@ this point, members can go to the association to collect the package
 \end{table}
 
 
-\subsubsection{Actor/action}
+\newpage
+\paragraph{Actor/action}
 
+\begin{center}
+  \begin{minipage}{0.65\linewidth}
+    \vspace{0pt}
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{llll}
+      \textbf{Actor}                 & \textbf{Action}                & \textbf{Component} \\ \hline
+      \multirow{4}{*}{Client}        & Search for products            & Product browser    \\
+                                     & View details about products    & Product browser    \\
+                                     & Place order                    & Order placement    \\
+                                     & Pay order                      & Order payment      \\ \hline
+      Farmer                         & Insert products availabilities & Product submission \\ \hline
+      \multirow{4}{*}{Shop employee} & Review products availabilities & Product review     \\
+                                     & Insert client order            & Delegate order     \\
+                                     & Insert client payment          & Delegate payment   \\
+                                     & Register product delivery      & Order delivery     \\ \hline
+      System !                       & Send email notifications       & Email Notification \\
+    \end{tabular}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.35\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/Components/C-esempio7.png}
+  \end{minipage}
+\end{center}
 
-\begin{table}[hbt!]
-  \centering
-  \renewcommand{\arraystretch}{1.4}% Aumenta leggermente l'altezza delle righe per una migliore leggibilità
-  \begin{tabular}{llll}
-    \textbf{Actor}                 & \textbf{Action}                & \textbf{Component} \\ \hline
-    \multirow{4}{*}{Client}        & Search for products            & Product browser    \\
-                                   & View details about products    & Product browser    \\
-                                   & Place order                    & Order placement    \\
-                                   & Pay order                      & Order payment      \\ \hline
-    Farmer                         & Insert products availabilities & Product submission \\ \hline
-    \multirow{4}{*}{Shop employee} & Review products availabilities & Product review     \\
-                                   & Insert client order            & Delegate order     \\
-                                   & Insert client payment          & Delegate payment   \\
-                                   & Register product delivery      & Order delivery     \\ \hline
-    System !                       & Send email notifications       & Email Notification \\
-  \end{tabular}
-\end{table}
-
-
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.35\linewidth]{images/Components/C-esempio7.png}
-\end{figure}
 
 \subsection{Putting components together}
 
@@ -228,9 +242,9 @@ changes processes and motivation.
 \subsection{Component coupling}
 
 \begin{itemize}
-  \item The Acyclic Dependencies Principle (ADP): The dependency graph of packages must have no cycles.
-  \item The Stable Dependencies Principle (SDP): Depend in the direction of stability.
-  \item The Stable Abstractions Principle (SAP): Abstractness increases with stability.
+  \item The \textbf{Acyclic Dependencies Principle} (ADP): The dependency graph of packages must have no cycles.
+  \item The \textbf{Stable Dependencies Principle} (SDP): Depend in the direction of stability.
+  \item The \textbf{Stable Abstractions Principle} (SAP): Abstractness increases with stability.
 \end{itemize}
 
 
@@ -238,8 +252,9 @@ changes processes and motivation.
 
 Historical roots on typical issues of team-based development: the \textit{morning after syndrome}\footnote{The morning after syndrome occurs when code worked on, tested, and left working one day is broken the next morning due to changes made by others} and the \textit{weekly build}.
 
-\begin{center}
+\begin{flushleft}
   \begin{minipage}{0.65\linewidth}
+    \raggedright
 
     Solution to the problem: partition the development environment into
     releasable components
@@ -249,24 +264,24 @@ Historical roots on typical issues of team-based development: the \textit{mornin
     releases are uniquely identified and components follow their own, private, development path.
     E.g. in git versioning system, using separated branches or even separated repositories.
 
+    \begin{itemize}
+      \item \textbf{Advantages}: Changes made to one component do not affect other
+            teams, until they decide to adapt to the new component's release. I
+            ntegration happens in small steps
+      \item \textbf{Implications}: teams must monitor, manage and, maintain the
+            dependency structure over time. there can be no "cycles" or circular
+            dependencies in the dependency graph.
+    \end{itemize}
+
   \end{minipage}%
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
     \includegraphics[width=\linewidth]{images/Components/C-esempio8.png}
-
   \end{minipage}
-\end{center}
+\end{flushleft}
 
 
-\begin{itemize}
-  \item \textbf{Advantages}: Changes made to one component do not affect other
-        teams, until they decide to adapt to the new component's release. I
-        ntegration happens in small steps
-  \item \textbf{Implications}: teams must monitor, manage and, maintain the
-        dependency structure over time. there can be no "cycles" or circular
-        dependencies in the dependency graph.
-\end{itemize}
 
 \paragraph{Example: directed acyclic graph}
 
@@ -278,14 +293,8 @@ What happens when a change is made to Presenters?
 View and Main will be affected and tests with
 Interactor and Entities.
 
-The bottom-up "building" for system release
-
-\begin{itemize}
-  \item Entities
-  \item Database and Interactor
-  \item Presenters, View, Controllers, Authorizer
-  \item Main
-\end{itemize}
+The bottom-up "building" for system release:
+Entities -> Database and Interactor -> Presenters, View, Controllers, Authorizer -> Main
 
 \paragraph{Example 2: dependency cycle}
 
@@ -326,13 +335,16 @@ that require little effort to change.
 
 \subsubsection{A simple measure of (in)stability}
 
-X is very stable because three components depend on it and it
-depends on no other component, while Y is very unstable because
-no component depends on it and it depends on three other components.
 
 \begin{flushleft}
   \begin{minipage}{0.65\linewidth}
     \raggedright
+
+    X is very stable because three components depend on it and it
+    depends on no other component, while Y is very unstable because
+    no component depends on it and it depends on three other components.
+
+
     \textbf{Instability: } goes from 0 to 1, where 0 is the most stable and 1 is the most unstable.
 
     \begin{equation*}
@@ -347,23 +359,20 @@ no component depends on it and it depends on three other components.
       \item Fan-in is the number of incoming dependencies
       \item Fan-out is the number of outgoing dependencies
     \end{itemize}
+
+    \paragraph{Example: } I(C\_B) = 0.33. Fan-in = 4 and Fan-out = 2. I(C\_D) = $\frac{2}{4+2} = 0.33$.
   \end{minipage}%
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
     \includegraphics[width=\linewidth]{images/Components/C-esempio3.png}
+    \includegraphics[width=\linewidth]{images/Components/C-esempio9.png}
   \end{minipage}
 \end{flushleft}
 
 
 
-\paragraph{Example: } I(C\_B) = 0.33. Fan-in = 4 and Fan-out = 2. I(C\_D) = $\frac{2}{4+2} = 0.33$.
 
-
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.35\linewidth]{images/Components/C-esempio9.png}
-\end{figure}
 
 \subsubsection{SDP and stability measure}
 
@@ -416,35 +425,33 @@ this need. Thus, applying SDP: stability goes into the direction of abstraction
       \item A = 0 means that the component is completely concrete. No abstract classes.
       \item A = 1 means that the component is completely abstract. Only abstract classes.
     \end{itemize}
+
+    \begin{tcolorbox}
+      \textbf{Note:} Distance from the main sequence: $D = |A + I - 1|$
+    \end{tcolorbox}
   \end{minipage}%
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{images/Components/C-esempio5.png}
+    \includegraphics[width=0.7\linewidth]{images/Components/C-esempio5.png}
   \end{minipage}
 \end{flushleft}
 
-
-\begin{tcolorbox}
-  \textbf{Note:} Distance from the main sequence: $D = |A + I - 1|$
-\end{tcolorbox}
-
-
-
-
 \section{Strategic decisions}
 
-\subsection{Iterative Refinement}
+\subsubsection{Iterative Refinement}
 
 \begin{center}
-  \begin{minipage}{0.47\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-03-22-10-17-17.png}
-  \end{minipage}%
-  \hfill
-  \begin{minipage}{0.47\linewidth}
-    \centering
-    \includegraphics[width=0.55\linewidth]{content/chapters/images/2026-03-22-10-18-26.png}
+  \begin{minipage}{0.7\linewidth}
+    \begin{minipage}{0.47\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{content/chapters/images/2026-03-22-10-17-17.png}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.47\linewidth}
+      \centering
+      \includegraphics[width=0.55\linewidth]{content/chapters/images/2026-03-22-10-18-26.png}
+    \end{minipage}
   \end{minipage}
 \end{center}
 
@@ -467,7 +474,6 @@ this need. Thus, applying SDP: stability goes into the direction of abstraction
   \item \textbf{Continuity}: The system's disaster recovery capability.
   \item \textbf{Robustness}: The system's ability to handle error and boundary conditions
         while running, for example, if the internet connection or power fails.
-  \item ...
 \end{itemize}
 
 
@@ -482,56 +488,56 @@ this need. Thus, applying SDP: stability goes into the direction of abstraction
   \item \textbf{Deployability}: ease, frequency and overall risk of deployment
   \item \textbf{Evolvability}: system's ability to survive changes in its environment,
         requirements and implementation technologies
-  \item ...
 \end{itemize}
 
 \begin{center}
   \begin{minipage}{0.65\linewidth}
 
-    \subsection{Strategic level: partitioning}
-    Technical partitioning vs domain partitioning
+    \subsection{Conway's law}
+
+    Organizations which design systems...are constrained to produce
+    designs which are copies of the communication structures of these
+    organizations.
+
+
+    The structure of the design will reflect how people communicate
+    and work together
 
   \end{minipage}%
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-03-22-10-38-08.png}
+    \includegraphics[width=0.6\linewidth]{content/chapters/images/2026-03-22-10-38-08.png}
+    \captionof{figure}{Technical partitioning vs domain partitioning}
   \end{minipage}
 \end{center}
 
+\begin{flushleft}
+  \begin{minipage}{0.47\linewidth}
 
+    \subsection{Monolithic versus Distributed architecture}
 
-\subsection{Conway's law}
+    \begin{itemize}
+      \item[]  \textbf{Monolithic}: single deployment unit of all code
+      \item[] \textbf{Distributed}: multiple deployment units connected through remote
+            access protocols
+    \end{itemize}
 
-Organizations which design systems...are constrained to produce
-designs which are copies of the communication structures of these
-organizations.
-
-
-The structure of the design will reflect how people communicate
-and work together
-
-
-\subsection{Monolithic versus Distributed architecture}
-
-\begin{itemize}
-  \item[]  \textbf{Monolithic}: single deployment unit of all code
-  \item[] \textbf{Distributed}: multiple deployment units connected through remote
-        access protocols
-\end{itemize}
-
-
-\begin{table}[htbp]
-  \renewcommand{\arraystretch}{1.4}
-  \centering
-  \begin{tabular}{ll}
-    \textbf{Monolithic}   & \textbf{Distributed} \\
-    \hline
-    Layered architecture  & Service-based        \\
-    Pipeline architecture & Event-driven         \\
-    Modular monolith      & Space-based          \\
-    Microkernel           & Service-oriented     \\
-                          & Microservices        \\
-  \end{tabular}
-\end{table}
-
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.47\linewidth}
+    \raggedright
+    \vspace{0pt}
+    \raggedright
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{ll}
+      \textbf{Monolithic}   & \textbf{Distributed} \\
+      \hline
+      Layered architecture  & Service-based        \\
+      Pipeline architecture & Event-driven         \\
+      Modular monolith      & Space-based          \\
+      Microkernel           & Service-oriented     \\
+                            & Microservices        \\
+    \end{tabular}
+  \end{minipage}
+\end{flushleft}
