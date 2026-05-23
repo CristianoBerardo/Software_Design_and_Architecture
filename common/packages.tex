@@ -20,13 +20,15 @@
 \usepackage{booktabs}               %  better tables
 \usepackage[labelfont=bf]{caption} % font=footnotesize % to have reduced caption font size
 \usepackage{enumitem} %left align the bulleted points
-\usepackage[top=30mm, bottom=30mm, inner=25mm, outer=25mm]{geometry} % inner larger for binding (cucitura)
+% \usepackage[top=30mm, bottom=30mm, inner=25mm, outer=25mm]{geometry} % inner larger for binding (cucitura)
+% modificato da Cristiano Berardo
+\usepackage[top=20mm, bottom=20mm, inner=17mm, outer=17mm]{geometry} % inner larger for binding (cucitura)
 %\usepackage{glossaries} % to use acronyms and glossary, it has also glossaries-extra as extension, but commands are different
 \usepackage[%
-    toc, % puts the link in the ToC
-    %record, % to use bib2gls
-    abbreviations, % to load abbreviations / acronyms
-    nonumberlist, % to avoid printing the numbers of the references in the acronyms page
+  toc, % puts the link in the ToC
+  %record, % to use bib2gls
+  abbreviations, % to load abbreviations / acronyms
+  nonumberlist, % to avoid printing the numbers of the references in the acronyms page
 ]{glossaries-extra}
 \usepackage{graphicx}               %  post-script images
 %\usepackage{iwona} % extra fonts, substitute standard ones
@@ -60,10 +62,14 @@
 
 \usepackage{tcolorbox}
 \tcbset{
-    width=0.95\linewidth,
-    center,
-    arc=2mm,
-    colback=blue!5!white, 
-    colframe=blue!50!white,}
+  width=0.95\linewidth,
+  center,
+  arc=2mm,
+  colback=blue!5!white,
+  colframe=blue!50!white,}
 
-    
+
+% per le faccine
+\usepackage{wasysym}
+
+

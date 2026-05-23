@@ -19,17 +19,19 @@ The goal of the SOLID principles is to create mid-level software structures
 \end{itemize}
 
 \subsection{Single Responsibility Principle - SRP}
-A module should have one, and only one, reason to change. It means
-that a module should be responsible to \textbf{one}, and only one, \textbf{actor}.
-
-
-This is helpful to separate code used by different actors and for a better
-maintenance.
 
 
 \begin{center}
   \begin{minipage}{\linewidth}
     \begin{minipage}{0.7\linewidth}
+
+      A module should have one, and only one, reason to change. It means
+      that a module should be responsible to \textbf{one}, and only one, \textbf{actor}.
+
+
+      This is helpful to separate code used by different actors and for a better
+      maintenance.
+
 
       \paragraph{Example}
       \textit{CalculateTax()} is specified by the
@@ -60,22 +62,32 @@ Changes in \textit{ComputeAverage()} affect two actors: errors may arise and
 also changes to Class Student due to different needs of actors may lead to
 collisions and merges.
 
-\newpage
-\subsubsection{Solution 1: Separate data from functions}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.25\linewidth]{images/DesignPrinciples/DP-esempio2.png}
-\end{figure}
+\begin{flushleft}
+  \begin{minipage}{0.7\linewidth}
+    \begin{minipage}[t]{0.45\linewidth}
+      \paragraph{Solution 1: Separate data from functions}
+      \centering
 
-\subsubsection{Solution 2: Use the Façade pattern}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.25\linewidth]{images/DesignPrinciples/DP-esempio3.png}
-\end{figure}
+      \includegraphics[width=\linewidth]{images/DesignPrinciples/DP-esempio2.png}
 
-You increase cupling and complexity, its a trade off, but the separation is splitted.
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.45\linewidth}
+
+      \paragraph{Solution 2: Use the Façade pattern}
+      You increase cupling and complexity, its a trade off, but the separation is splitted.
+      \centering
+      \includegraphics[width=\linewidth]{images/DesignPrinciples/DP-esempio3.png}
+
+    \end{minipage}
+  \end{minipage}
+\end{flushleft}
+
+
+
+
 
 \begin{tcolorbox}
   \textbf{Note:} You increase cupling and complexity but the separation is splitted.
@@ -102,14 +114,16 @@ modify that artifact.\newline
 The aim of OCP is to make the system easy to extend without
 requiring too many changes to the system.
 
-Using the open-closed principle, the software architect divides the
-system into components and arranges these components in a
-dependency hierarchy that protects higher-level components from
-changes in lower-level components.
 
 \begin{center}
   \begin{minipage}{\linewidth}
     \begin{minipage}{0.6\linewidth}
+
+      Using the open-closed principle, the software architect divides the
+      system into components and arranges these components in a
+      dependency hierarchy that protects higher-level components from
+      changes in lower-level components.
+
 
       \paragraph{Example}
 

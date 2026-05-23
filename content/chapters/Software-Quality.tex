@@ -1,57 +1,80 @@
 \chapter{Software Quality}
 
-\begin{center}
-  \begin{minipage}{0.65\linewidth}
-
-    ISO/IEC 9126: issued in 1991 and revised in 2001, being retired.
-    Iso/IEC 25XX - SQuaRE: Software Product Quality Requirements and Evaluation.
-    Is a family of standards in development.
-  \end{minipage}%
-  \hfill
-  \begin{minipage}{0.3\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-05-09-15-09-16.png}
-  \end{minipage}
-\end{center}
+ISO/IEC 9126: issued in 1991 and revised in 2001, being retired.
+Iso/IEC 25XX - SQuaRE: Software Product Quality Requirements and Evaluation.
+Is a family of standards in development.
 
 Software quality is divided in two parts: Product quality (internal,
 external, in use, data) and process quality.
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.25\linewidth]{content/chapters/images/2026-05-09-15-12-00.png}
-\end{figure}
+\begin{center}
+  \begin{minipage}{0.5\linewidth}
+    \begin{minipage}{0.47\linewidth}
+      \centering
+
+      \includegraphics[width=\linewidth]{content/chapters/images/2026-05-09-15-09-16.png}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.47\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{content/chapters/images/2026-05-09-15-12-00.png}
+    \end{minipage}
+  \end{minipage}
+\end{center}
 
 \section{Target entities}
-Product quality addresses several diﬀerent entities in a
-complex information system
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.25\linewidth]{content/chapters/images/2026-05-09-15-12-58.png}
-\end{figure}
 
-\subsection{Model structure}
+\begin{center}
+  \begin{minipage}{0.65\linewidth}
+    Product quality addresses several diﬀerent entities in a
+    complex information system
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width=0.5\linewidth]{content/chapters/images/2026-05-09-15-12-58.png}
+  \end{minipage}
+\end{center}
 
-\begin{itemize}
-  \item \textbf{Characteristics}: main aspects eg. usability
-  \item \textbf{Sub-characteristics}: specific aspects eg. accessibility
-  \item \textbf{Metrics}: evaluate a specific (sub)-characteristic, eg. number of clicks to reach a page
-  \item \textbf{Measure elements}: Fundamental
-\end{itemize}
 
-\section{Software product quality}
 
-\begin{itemize}
-  \item Functional suitability
-  \item Performance efficiency
-  \item Compatibility
-  \item Interaction capability (Usability)
-  \item Reliability
-  \item Security
-  \item Maintainability
-  \item Flexibility
-\end{itemize}
+
+
+
+
+\begin{flushleft}
+  \begin{minipage}[t]{0.45\linewidth}
+    \raggedright
+    \section{Model structure}
+    \begin{itemize}
+      \item \textbf{Characteristics}: main aspects eg. usability
+      \item \textbf{Sub-characteristics}: specific aspects eg. accessibility
+      \item \textbf{Metrics}: evaluate a specific (sub)-characteristic, eg. number of clicks to reach a page
+      \item \textbf{Measure elements}: Fundamental
+    \end{itemize}
+
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.45\linewidth}
+    \raggedright
+    \section{Software product quality}
+
+    \begin{itemize}
+      \item Functional suitability
+      \item Performance efficiency
+      \item Compatibility
+      \item Interaction capability (Usability)
+      \item Reliability
+      \item Security
+      \item Maintainability
+      \item Flexibility
+    \end{itemize}
+
+  \end{minipage}
+\end{flushleft}
+
+
 
 \subsection{Functional suitability}
 
@@ -99,14 +122,16 @@ contexts of use, or system environment: adaptability, installability, replaceabi
 \subsection{Sub-characteristics}
 
 \begin{center}
-  \begin{minipage}{0.47\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-05-09-15-25-16.png}
-  \end{minipage}%
-  \hfill
-  \begin{minipage}{0.47\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-05-09-15-53-18.png}
+  \begin{minipage}{0.75\linewidth}
+    \begin{minipage}{0.47\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{content/chapters/images/2026-05-09-15-25-16.png}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.47\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{content/chapters/images/2026-05-09-15-53-18.png}
+    \end{minipage}
   \end{minipage}
 \end{center}
 
@@ -114,9 +139,9 @@ contexts of use, or system environment: adaptability, installability, replaceabi
 \subsection{Usability - User error protection}
 
 \begin{table}[h!]
-  \renewcommand{\arraystretch}{1.6}
+  \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{0.75\textwidth}{X X}
+  \begin{tabularx}{\textwidth}{l X}
     \toprule
     \textbf{ID}          & \textbf{UEp-1-G}                                                                                                                                       \\
     \midrule
@@ -131,9 +156,9 @@ contexts of use, or system environment: adaptability, installability, replaceabi
 \subsection{Reliability - Maturity}
 
 \begin{table}[h!]
-  \renewcommand{\arraystretch}{1.6}
+  \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{0.75\textwidth}{X X}
+  \begin{tabularx}{\textwidth}{l X}
     \toprule
     \textbf{ID}          & \textbf{RMa-1-G}                                                                                                                                             \\
     \midrule
@@ -148,9 +173,9 @@ contexts of use, or system environment: adaptability, installability, replaceabi
 \subsection{Maintainability - Modularity}
 
 \begin{table}[h!]
-  \renewcommand{\arraystretch}{1.6}
+  \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{0.75\textwidth}{X X}
+  \begin{tabularx}{\textwidth}{l X}
     \toprule
     \textbf{ID}          & \textbf{MMo-2-S}                                                                                                                                                                                                                                                               \\
     \midrule
@@ -167,7 +192,7 @@ contexts of use, or system environment: adaptability, installability, replaceabi
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=0.5\linewidth]{content/chapters/images/2026-05-09-15-45-47.png}
+  \includegraphics[width=0.2\linewidth]{content/chapters/images/2026-05-09-15-45-47.png}
 \end{figure}
 
 \subsection{Quality in Use - Characteristics}
@@ -190,9 +215,9 @@ contexts of use, or system environment: adaptability, installability, replaceabi
 \subsection{Maintainability - Effectiveness}
 
 \begin{table}[h!]
-  \renewcommand{\arraystretch}{1.6}
+  \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{0.75\textwidth}{X X}
+  \begin{tabularx}{\textwidth}{X X}
     \toprule
     \textbf{ID}           & \textbf{MMo-2-S}                                                                                                      \\
     \midrule
@@ -222,7 +247,7 @@ Characteristics from two perspectives:
 \end{itemize}
 
 \begin{table}[h!]
-  \renewcommand{\arraystretch}{1.6}
+  \renewcommand{\arraystretch}{1.4}
   \centering
   \begin{tabular}{l c c}
     \toprule

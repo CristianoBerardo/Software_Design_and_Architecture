@@ -14,24 +14,37 @@ The software must change to adapt to software regulation, user feedback.
 We have some pattern that make methods and classes easy to be changed, but now
 we want something behond the methods.
 
-The goals of an architecture are:
-\begin{itemize}
-  \setlength{\itemsep}{0pt}
-  \item keep the system valuable for its users over time
-  \item minimize the lifetime cost of the system
-  \item maximize programmer productivity
-\end{itemize}
 
-This can be achieved by making the system:
 
-\begin{itemize}
-  \setlength{\itemsep}{0pt}
-  \item easy to understand
-  \item easy to develop
-  \item easy to maintain
-  \item easy to deploy
-  \item easy to change
-\end{itemize}
+
+
+\begin{flushleft}
+  \begin{minipage}[t]{0.45\linewidth}
+    \raggedright
+    \paragraph{The goals of an architecture are}:
+    \begin{itemize}
+      \setlength{\itemsep}{0pt}
+      \item keep the system valuable for its users over time
+      \item minimize the lifetime cost of the system
+      \item maximize programmer productivity
+    \end{itemize}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.45\linewidth}
+    \raggedright
+    \paragraph{This can be achieved by making the system}:
+
+    \begin{itemize}
+      \setlength{\itemsep}{0pt}
+      \item easy to understand
+      \item easy to develop
+      \item easy to maintain
+      \item easy to deploy
+      \item easy to change
+    \end{itemize}
+  \end{minipage}
+\end{flushleft}
+
 
 In Java we have the package, that is a module, and is a logical grouping of classes.
 
@@ -58,7 +71,7 @@ are shaped.
     \hfill
     \begin{minipage}{0.35\linewidth}
       \centering
-      \includegraphics[width=0.8\linewidth]{images/SA/SA-esempio1.png}
+      \includegraphics[width=0.6\linewidth]{images/SA/SA-esempio1.png}
     \end{minipage}
   \end{minipage}
 \end{center}
@@ -91,7 +104,7 @@ are usually affected by lower-level changes.
     % Secondo blocco: 40% dello spazio per l'immagine
     \begin{minipage}{0.35\linewidth}
       \centering
-      \includegraphics[width=0.7\linewidth]{images/SA/SA-esempio2.png}
+      \includegraphics[width=0.45\linewidth]{images/SA/SA-esempio2.png}
     \end{minipage}
   \end{minipage}
 \end{center}
@@ -165,7 +178,7 @@ Main scenario:
 Their goal is to shape data in a way that it is convenient to higher
 levels or other systems or artifacts interacting with:
 
-The same is done in the opposite direction. Examples of code in this 
+The same is done in the opposite direction. Examples of code in this
 layer: Presenters for GUI, Controller for DB
 
 Code inward to this level know anything about details (e.g., SQL)
@@ -185,30 +198,33 @@ and usually we do not write mutch code here.
 
 \section{Separation of policy from details}
 
+% \begin{center}
+%   \begin{minipage}{\linewidth}
+%     \begin{minipage}{0.7\linewidth}
+
+%     \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
+%     \hfill
+%     \begin{minipage}{0.25\linewidth}
+%       \centering
+%       \includegraphics[width=0.35\linewidth]{images/SA/SA-esempio5.png}
+%     \end{minipage}
+%   \end{minipage}
+% \end{center}
+
+
+
 \begin{center}
   \begin{minipage}{\linewidth}
     \begin{minipage}{0.7\linewidth}
+
       Decoupling of policy from the details and defer decisions on details for
       as long as possible (MongoDB or SQL, etc.)
 
       DB component knows about use case rules component, but NOT viceversa.
 
       Low level components know everything of the higher-level components,
-      but NOT viceversa
-    \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
-    \hfill
-    \begin{minipage}{0.25\linewidth}
-      \centering
-      \includegraphics[width=0.45\linewidth]{images/SA/SA-esempio5.png}
-    \end{minipage}
-  \end{minipage}
-\end{center}
+      but NOT viceversa.
 
-
-
-\begin{center}
-  \begin{minipage}{\linewidth}
-    \begin{minipage}{0.7\linewidth}
       The Database component contains the code that translates the calls made
       by the BusinessRules into the query language of the database. This
       translation code knows about the BusinessRules.
@@ -219,7 +235,7 @@ and usually we do not write mutch code here.
     \hfill
     \begin{minipage}{0.25\linewidth}
       \centering
-      \includegraphics[width=0.85\linewidth]{images/SA/SA-esempio4.png}
+      \includegraphics[width=0.785\linewidth]{images/SA/SA-esempio4.png}
     \end{minipage}
   \end{minipage}
 \end{center}

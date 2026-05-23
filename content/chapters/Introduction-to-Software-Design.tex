@@ -68,21 +68,35 @@ keeping unimportant information can leads to cognitive overload.
   \end{minipage}
 \end{minipage}
 
-\subsection{Information Hiding}
-Information hiding is the principle of hiding the implementation details of a module from the users of the module.
-Example sort function: we want to sort a list of numbers, we don't care about how the sorting algorithm used.
 
 
-\subsection{Information Leakage}
 
-Is the opposite of information hiding. Occurs when the implementation details of a module is reflected
-in multiple modules with consequences of creating dependencies.
+
+\begin{flushleft}
+  \begin{minipage}[t]{0.45\linewidth}
+    \raggedright
+    \subsection{Information Hiding}
+    Information hiding is the principle of hiding the implementation details of a module from the users of the module.
+    Example sort function: we want to sort a list of numbers, we don't care about how the sorting algorithm used.
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.45\linewidth}
+    \raggedright
+    \subsection{Information Leakage}
+
+    Is the opposite of information hiding. Occurs when the implementation details of a module is reflected
+    in multiple modules with consequences of creating dependencies.
+  \end{minipage}
+\end{flushleft}
+
+
 
 \subsection{Information Hiding Red Flags}
 \begin{itemize}
   \item \textbf{temporal decomposition}: execution order is reflected in the code structure. Operations that happen
         in different times are in different classes.
-  \item \textbf{overexposure}: API forces knowledge about rarely used features to use common ones. E.g. \mintinline{java}{BufferedReader r = new BufferedReader(new InputStreamReader(System.in));}
+  \item \textbf{overexposure}: API forces knowledge about rarely used features to use common ones.
+        E.g. \mintinline{java}{BufferedReader r = new BufferedReader(new InputStreamReader(System.in));}
   \item \textbf{Too many classes}: code is divide into too many shallow classes.
 \end{itemize}
 
@@ -206,12 +220,12 @@ There are some methods to limit the number of exceptions that a method can throw
 
 \section{Dependency Dimensions}
 
-\begin{enumerate}
-  \item Structural (Code-Level) Dependencies
-  \item Runtime / Distribution Dependencies
-  \item Data-Level Dependencies
-  \item Behavioral Dependencies
-\end{enumerate}
+% \begin{enumerate}
+%   \item Structural (Code-Level) Dependencies
+%   \item Runtime / Distribution Dependencies
+%   \item Data-Level Dependencies
+%   \item Behavioral Dependencies
+% \end{enumerate}
 
 \subsection{Structural (Code-Level) Dependencies}
 

@@ -80,7 +80,7 @@ They are called Pattern Languages or pattern systems.\newline
 
 \noindent\begin{minipage}{0.95\linewidth}
   % Primo blocco: 50% dello spazio per il codice
-  \begin{minipage}{0.5\linewidth}
+  \begin{minipage}[t]{0.5\linewidth}
 
     Collection of patterns together with guidelines for:
 
@@ -93,7 +93,7 @@ They are called Pattern Languages or pattern systems.\newline
 
   \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
   \hfill
-  \begin{minipage}{0.47\linewidth}
+  \begin{minipage}[t]{0.47\linewidth}
 
 
     Should:
@@ -157,26 +157,28 @@ oriented design.
   \end{tabular}
 \end{table}
 
-\subsection{Pattern selection}
+\paragraph{Pattern selection}
 How to use patterns? First of all you need to know the problem you
 are trying to solve, knowing the patterns and then select the one that
 best fits your needs.
 
 \subsection{Creational patterns}
 
-\begin{itemize}
-  \item Class
-        \begin{itemize}
-          \item[] Factory Method
-        \end{itemize}
-  \item Object
-        \begin{itemize}
-          \item[] Abstract Factory
-          \item[] Builder
-          \item[] Prototype
-          \item[] Singleton
-        \end{itemize}
-\end{itemize}
+\vspace{0.5cm}
+\noindent\begin{minipage}{\linewidth}
+  \begin{minipage}[t]{0.35\linewidth}
+    \begin{itemize}
+      \item \textbf{Class}: Factory Method
+    \end{itemize}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.65\linewidth}
+    \begin{itemize}
+      \item \textbf{Object}: Abstract Factory, Builder, Prototype, Singleton
+
+    \end{itemize}
+  \end{minipage}
+\end{minipage}
 
 \subsubsection{Abstract Factory}
 
@@ -186,7 +188,7 @@ best fits your needs.
   \centering
   \begin{minipage}{\linewidth}
     % Primo blocco: 50% dello spazio per il codice
-    \begin{minipage}{0.6\linewidth}
+    \begin{minipage}{0.7\linewidth}
 
       A family of related classes can have different
       implementation details.
@@ -199,9 +201,9 @@ best fits your needs.
 
     \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
     \hfill
-    \begin{minipage}{0.35\linewidth}
+    \begin{minipage}{0.3\linewidth}
 
-      \includegraphics[width=1\linewidth]{images/DesignPatterns/DP-esempio1.png}
+      \includegraphics[width=\linewidth]{images/DesignPatterns/DP-esempio1.png}
 
     \end{minipage}
   \end{minipage}
@@ -214,7 +216,7 @@ best fits your needs.
   \centering
   \begin{minipage}{\linewidth}
     % Primo blocco: 50% dello spazio per il codice
-    \begin{minipage}{0.6\linewidth}
+    \begin{minipage}{0.7\linewidth}
 
       A class represents a concept that requires a single
       instance.
@@ -228,9 +230,9 @@ best fits your needs.
       \end{tcolorbox}
     \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
     \hfill
-    \begin{minipage}{0.35\linewidth}
+    \begin{minipage}{0.3\linewidth}
 
-      \includegraphics[width=1\linewidth]{images/DesignPatterns/DP-esempio2.png}
+      \includegraphics[width=\linewidth]{images/DesignPatterns/DP-esempio2.png}
 
     \end{minipage}
   \end{minipage}
@@ -243,7 +245,7 @@ best fits your needs.
   \centering
   \begin{minipage}{\linewidth}
     % Primo blocco: 50% dello spazio per il codice
-    \begin{minipage}{0.6\linewidth}
+    \begin{minipage}{0.7\linewidth}
 
       An object of a complex class has to be created.
 
@@ -252,9 +254,9 @@ best fits your needs.
 
     \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
     \hfill
-    \begin{minipage}{0.35\linewidth}
+    \begin{minipage}{0.3\linewidth}
 
-      \includegraphics[width=1\linewidth]{images/DesignPatterns/DP-esempio3.png}
+      \includegraphics[width=\linewidth]{images/DesignPatterns/DP-esempio3.png}
 
     \end{minipage}
   \end{minipage}
@@ -266,7 +268,7 @@ best fits your needs.
   \centering
   \begin{minipage}{\linewidth}
     % Primo blocco: 50% dello spazio per il codice
-    \begin{minipage}{0.47\linewidth}
+    \begin{minipage}[t]{0.47\linewidth}
 
       \begin{minted}[breaklines]{java}
 //Usual non-ﬂuent builder
@@ -279,21 +281,14 @@ power.setPrecision(2);
 
     \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
     \hfill
-    \begin{minipage}{0.47\linewidth}
+    \begin{minipage}[t]{0.47\linewidth}
 
       \begin{minted}{java}
-
-
-
 //Fluent builder
 Measure power = new Measure.Builder(10.4)
-    .is("kg")
-    .by("m")
-    .squared()
-    .by("s")
-    .to(-3)
-    .withPrecision(2)
-    .build();
+    .is("kg").by("m")
+    .squared().by("s").to(-3)
+    .withPrecision(2).build();
 \end{minted}
 
     \end{minipage}
@@ -308,7 +303,7 @@ Measure power = new Measure.Builder(10.4)
   \centering
   \begin{minipage}{\linewidth}
     % Primo blocco: 50% dello spazio per il codice
-    \begin{minipage}{0.6\linewidth}
+    \begin{minipage}{0.7\linewidth}
       Several object can be created out of a palette of
       similar classes.
 
@@ -327,9 +322,9 @@ Measure power = new Measure.Builder(10.4)
 
     \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
     \hfill
-    \begin{minipage}{0.35\linewidth}
+    \begin{minipage}{0.3\linewidth}
 
-      \includegraphics[width=1\linewidth]{images/DesignPatterns/DP-esempio4.png}
+      \includegraphics[width=\linewidth]{images/DesignPatterns/DP-esempio4.png}
 
     \end{minipage}
   \end{minipage}
@@ -340,22 +335,21 @@ Measure power = new Measure.Builder(10.4)
 
 How  organize classes and objects to compose larger structures.
 
-\begin{itemize}
-  \item Class
-        \begin{itemize}
-          \item[] Adapter
-        \end{itemize}
-  \item Object
-        \begin{itemize}
-          \item[] Bridge
-          \item[] Composite
-          \item[] Decorator
-          \item[] Facade
-          \item[] Flyweight
-          \item[] Proxy
-        \end{itemize}
-\end{itemize}
+\vspace{0.5cm}
+\noindent\begin{minipage}{\linewidth}
+  \begin{minipage}[t]{0.35\linewidth}
+    \begin{itemize}
+      \item \textbf{Class}: Adapter
+    \end{itemize}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.65\linewidth}
+    \begin{itemize}
+      \item \textbf{Object}: Bridge, Composite, Decorator, Facade, Flyweight, Proxy
 
+    \end{itemize}
+  \end{minipage}
+\end{minipage}
 
 \subsubsection{Adapter}
 
@@ -364,7 +358,7 @@ How  organize classes and objects to compose larger structures.
   \centering
   \begin{minipage}{\linewidth}
     % Primo blocco: 50% dello spazio per il codice
-    \begin{minipage}{0.6\linewidth}
+    \begin{minipage}{0.7\linewidth}
 
       A class provides the features required by another
       class but its interface is not the one expected by the client.
@@ -382,9 +376,9 @@ How  organize classes and objects to compose larger structures.
 
     \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
     \hfill
-    \begin{minipage}{0.35\linewidth}
+    \begin{minipage}{0.3\linewidth}
 
-      \includegraphics[width=1\linewidth]{images/DesignPatterns/DP-esempio5.png}
+      \includegraphics[width=\linewidth]{images/DesignPatterns/DP-esempio5.png}
 
     \end{minipage}
   \end{minipage}
@@ -398,7 +392,7 @@ How  organize classes and objects to compose larger structures.
   \centering
   \begin{minipage}{\linewidth}
     % Primo blocco: 50% dello spazio per il codice
-    \begin{minipage}{0.6\linewidth}
+    \begin{minipage}{0.7\linewidth}
 
       You need to represent part-whole hierarchies of
       objects.
@@ -413,9 +407,9 @@ How  organize classes and objects to compose larger structures.
 
     \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
     \hfill
-    \begin{minipage}{0.35\linewidth}
+    \begin{minipage}{0.3\linewidth}
 
-      \includegraphics[width=1\linewidth]{images/DesignPatterns/DP-esempio6.png}
+      \includegraphics[width=\linewidth]{images/DesignPatterns/DP-esempio6.png}
 
     \end{minipage}
   \end{minipage}
@@ -430,7 +424,7 @@ How  organize classes and objects to compose larger structures.
   \centering
   \begin{minipage}{\linewidth}
     % Primo blocco: 50% dello spazio per il codice
-    \begin{minipage}{0.6\linewidth}
+    \begin{minipage}{0.7\linewidth}
 
       You have some objects of classes that have
       specific behaviour and you want to add the same
@@ -450,9 +444,9 @@ How  organize classes and objects to compose larger structures.
 
     \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
     \hfill
-    \begin{minipage}{0.35\linewidth}
+    \begin{minipage}{0.3\linewidth}
 
-      \includegraphics[width=1\linewidth]{images/DesignPatterns/DP-esempio7.png}
+      \includegraphics[width=\linewidth]{images/DesignPatterns/DP-esempio7.png}
 
     \end{minipage}
   \end{minipage}
@@ -466,7 +460,7 @@ How  organize classes and objects to compose larger structures.
   \centering
   \begin{minipage}{\linewidth}
     % Primo blocco: 50% dello spazio per il codice
-    \begin{minipage}{0.6\linewidth}
+    \begin{minipage}{0.7\linewidth}
 
       You need need to create a very large number of similar
       objects, and memory usage and performance become concerns.
@@ -476,9 +470,9 @@ How  organize classes and objects to compose larger structures.
 
     \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
     \hfill
-    \begin{minipage}{0.35\linewidth}
+    \begin{minipage}{0.3\linewidth}
 
-      \includegraphics[width=1\linewidth]{images/DesignPatterns/DP-esempio8.png}
+      \includegraphics[width=\linewidth]{images/DesignPatterns/DP-esempio8.png}
 
     \end{minipage}
   \end{minipage}
@@ -513,7 +507,7 @@ changing interface or class.
   \centering
   \begin{minipage}{\linewidth}
     % Primo blocco: 50% dello spazio per il codice
-    \begin{minipage}{0.6\linewidth}
+    \begin{minipage}{0.7\linewidth}
 
       Hide the details and the complexity of a general class by providing
       a simpler interface.
@@ -521,9 +515,9 @@ changing interface or class.
 
     \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
     \hfill
-    \begin{minipage}{0.35\linewidth}
+    \begin{minipage}{0.3\linewidth}
 
-      \includegraphics[width=1\linewidth]{images/DesignPatterns/DP-esempio9.png}
+      \includegraphics[width=0.75\linewidth]{images/DesignPatterns/DP-esempio9.png}
 
     \end{minipage}
   \end{minipage}
@@ -533,34 +527,21 @@ changing interface or class.
 Behavioral patterns allow to implement specific algorithms
 using objects and classes to provide control and flexibility.
 
-\noindent\begin{minipage}{0.95\linewidth}
-  \begin{minipage}{0.47\linewidth}
+\vspace{0.5cm}
+\noindent\begin{minipage}{\linewidth}
+  \begin{minipage}[t]{0.35\linewidth}
     \begin{itemize}
-      \item Class
-            \begin{itemize}
-              \item[] Interpreter
-              \item[] Template Method
-            \end{itemize}
+      \item \textbf{Class}: Interpreter, Template Method
     \end{itemize}
   \end{minipage}%
   \hfill
-  \begin{minipage}{0.47\linewidth}
+  \begin{minipage}[t]{0.65\linewidth}
     \begin{itemize}
-      \item Object
-            \begin{itemize}
-              \item[] Chain of Responsibility
-              \item[] Command
-              \item[] Iterator
-              \item[] Mediator
-              \item[] Memento
-              \item[] Observer
-              \item[] State
-              \item[] Strategy
-              \item[] Visitor
-            \end{itemize}
+      \item \textbf{Object}: Chain of Responsibility, Command, Iterator, Mediator, Memento, Observer, State, Strategy, Visitor
     \end{itemize}
   \end{minipage}
 \end{minipage}
+\vspace{0.5cm}
 
 The basic mechanism of behavioral patterns is enapsultion variation.
 Instead of having a lot of if-else you have a structure at object level
@@ -571,7 +552,7 @@ that allows you to define different alternatives.
 \begin{center}
   \centering
   \begin{minipage}{\linewidth}
-    \begin{minipage}{0.6\linewidth}
+    \begin{minipage}{0.7\linewidth}
 
       An algorithm/behavior has a stable core and several
       variation at given points. You have to implement/maintain several almost
@@ -581,9 +562,9 @@ that allows you to define different alternatives.
 
     \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
     \hfill
-    \begin{minipage}{0.35\linewidth}
+    \begin{minipage}{0.3\linewidth}
 
-      \includegraphics[width=0.5\linewidth]{images/DesignPatterns/DP-esempio10.png}
+      \includegraphics[width=0.3\linewidth]{images/DesignPatterns/DP-esempio10.png}
 
     \end{minipage}
   \end{minipage}
@@ -592,21 +573,63 @@ that allows you to define different alternatives.
 
 \subsection{Strategy Pattern}
 
-\begin{center}
-  \centering
-  \begin{minipage}{\linewidth}
-    \begin{minipage}{0.6\linewidth}
+% \begin{flushleft}
+%   \raggedright
+%   \begin{minipage}{\linewidth}
+%     \begin{minipage}{0.7\linewidth}
 
+%       Many classes or algorithm has a stable core and
+%       several behavioral variations, several different
+%       implementations are needed.
+%       Every variation of an algorithm can be embedded
+%       in an object and passed as a parameter to
+%       the algorithm.
+
+%       \paragraph{Example:} Comparator in Java.
+
+%       Consequences:
+
+%       \begin{itemize}
+%         \item [+] Avoid conditional statements
+%         \item [+] Algorithms may be organized in families
+%         \item [+] Choice of implementations
+%         \item [+] Run-time binding
+%         \item [-] Clients must be aware of different strategies
+%         \item [-] Communication overhead
+%         \item [-] Increased number of objects
+%       \end{itemize}
+
+%     \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
+%     \hfill
+%     \begin{minipage}{0.3\linewidth}
+
+%       \includegraphics[width=\linewidth]{images/DesignPatterns/DP-esempio11.png}
+
+%     \end{minipage}
+%   \end{minipage}
+% \end{flushleft}
+
+\begin{flushleft}
+  \begin{minipage}{0.96\linewidth}
+    \begin{minipage}[c]{0.37\linewidth}
       Many classes or algorithm has a stable core and
       several behavioral variations, several different
       implementations are needed.
+
+
       Every variation of an algorithm can be embedded
       in an object and passed as a parameter to
       the algorithm.
 
       \paragraph{Example:} Comparator in Java.
 
-      Consequences:
+
+
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[c]{0.37\linewidth}
+      \centering
+      \textbf{Consequences}:
 
       \begin{itemize}
         \item [+] Avoid conditional statements
@@ -617,23 +640,22 @@ that allows you to define different alternatives.
         \item [-] Communication overhead
         \item [-] Increased number of objects
       \end{itemize}
-
-    \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
+    \end{minipage}%
     \hfill
-    \begin{minipage}{0.35\linewidth}
-
+    \begin{minipage}[c]{0.25\linewidth}
+      \centering
       \includegraphics[width=\linewidth]{images/DesignPatterns/DP-esempio11.png}
-
     \end{minipage}
   \end{minipage}
-\end{center}
+\end{flushleft}
+
 
 \subsection{Iterator pattern}
 
 \begin{center}
   \centering
   \begin{minipage}{\linewidth}
-    \begin{minipage}{0.6\linewidth}
+    \begin{minipage}{0.7\linewidth}
 
       You have a collection of objects and you want to iterate
       on it allowing multiple concurrent iterators.
@@ -642,9 +664,9 @@ that allows you to define different alternatives.
 
     \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
     \hfill
-    \begin{minipage}{0.35\linewidth}
+    \begin{minipage}{0.27\linewidth}
 
-      \includegraphics[width=1\linewidth]{images/DesignPatterns/DP-esempio12.png}
+      \includegraphics[width=\linewidth]{images/DesignPatterns/DP-esempio12.png}
 
     \end{minipage}
   \end{minipage}
@@ -652,10 +674,10 @@ that allows you to define different alternatives.
 
 \subsection{Observer pattern}
 
-\begin{center}
-  \centering
+\begin{flushleft}
+  \raggedright
   \begin{minipage}{\linewidth}
-    \begin{minipage}{0.6\linewidth}
+    \begin{minipage}{0.7\linewidth}
 
       The change in one object may influence one or more
       other objects. This can cause high coupling between objects
@@ -674,20 +696,20 @@ that allows you to define different alternatives.
 
     \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
     \hfill
-    \begin{minipage}{0.35\linewidth}
+    \begin{minipage}{0.3\linewidth}
 
-      \includegraphics[width=1\linewidth]{images/DesignPatterns/DP-esempio13.png}
+      \includegraphics[width=\linewidth]{images/DesignPatterns/DP-esempio13.png}
 
     \end{minipage}
   \end{minipage}
-\end{center}
+\end{flushleft}
 
 \subsection{Visitor}
 
 \begin{center}
   \centering
   \begin{minipage}{\linewidth}
-    \begin{minipage}{0.6\linewidth}
+    \begin{minipage}{0.7\linewidth}
 
       You have an object structure that contains many classes
       with different interfaces and you want to perform
@@ -699,9 +721,9 @@ that allows you to define different alternatives.
 
     \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
     \hfill
-    \begin{minipage}{0.35\linewidth}
+    \begin{minipage}{0.3\linewidth}
 
-      \includegraphics[width=1\linewidth]{images/DesignPatterns/DP-esempio14.png}
+      \includegraphics[width=\linewidth]{images/DesignPatterns/DP-esempio14.png}
 
     \end{minipage}
   \end{minipage}
@@ -709,12 +731,13 @@ that allows you to define different alternatives.
 
 \section{Inheritance vs. composition}
 
-Reuse can be achieved via:
 
-\begin{center}
-  \centering
+\begin{flushleft}
+  \raggedright
+
   \begin{minipage}{\linewidth}
-    \begin{minipage}{0.6\linewidth}
+    \begin{minipage}{0.7\linewidth}
+      Reuse can be achieved via:
 
       \begin{itemize}
         \item \textbf{Inheritance}: a new class is created by
@@ -727,20 +750,20 @@ Reuse can be achieved via:
               the calls to it.
       \end{itemize}
 
+      \begin{tcolorbox}
+        \textbf{Note:} The Observable pattern is deprecated. The PropertyChangeSupport is more flexible.
+      \end{tcolorbox}
+
     \end{minipage}% <-- IMPORTANTE: il simbolo % qui evita spazi bianchi extra
     \hfill
-    \begin{minipage}{0.35\linewidth}
+    \begin{minipage}{0.3\linewidth}
 
-      \includegraphics[width=1\linewidth]{images/DesignPatterns/DP-esempio14.png}
+      \includegraphics[width=\linewidth]{images/DesignPatterns/DP-esempio14.png}
 
     \end{minipage}
   \end{minipage}
-\end{center}
+\end{flushleft}
 
-\noindent
-\begin{tcolorbox}
-  \textbf{Note:} The Observable pattern is deprecated. The PropertyChangeSupport is more flexible.
-\end{tcolorbox}
 
 \section{Abstract Syntax Tree}
 
@@ -750,3 +773,102 @@ We can use the composite pattern to representationt he arithmetic expressions.
 And using the visitor pattern or the interpreter pattern to evaluate the expression.
 
 \section{Model View Controller}
+
+
+% \begin{center}
+%   \begin{minipage}{0.96\linewidth}
+%     \begin{minipage}[t]{0.47\linewidth}
+%       \textbf{Context}: Interactive applications with flexible HCI.
+
+%       \textbf{Problem}: The same information is presented in different ways/windows, Windows must present consistent data, Should be possible to add/change presentations of information
+
+%     \end{minipage}%
+%     \hfill
+%     \begin{minipage}[t]{0.25\linewidth}
+
+%       \centering
+%       \includegraphics[width=\linewidth]{content/chapters/images/2026-05-23-13-56-44.png}
+
+
+%     \end{minipage}%
+%     \hfill
+%     \begin{minipage}[t]{0.25\linewidth}
+
+%       \centering
+%       \includegraphics[width=\linewidth]{content/chapters/images/2026-05-23-13-57-10.png}
+
+%     \end{minipage}
+%   \end{minipage}
+% \end{center}
+
+
+\begin{center}
+  \begin{minipage}{0.96\linewidth}
+    \begin{minipage}[c]{0.47\linewidth}
+      \textbf{Context}: Interactive applications with flexible HCI.
+
+      \textbf{Problem}: The same information is presented in different ways/windows, Windows must present consistent data, Should be possible to add/change presentations of information
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[c]{0.25\linewidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{content/chapters/images/2026-05-23-13-56-44.png}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[c]{0.25\linewidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{content/chapters/images/2026-05-23-13-57-10.png}
+    \end{minipage}
+  \end{minipage}
+\end{center}
+
+\subsection{MVC Principles}
+
+
+When building a GUI we must consider two main
+aspects:
+
+
+\begin{itemize}
+  \item Layout (\textbf{View}): how to place the graphical elements to achieve a give visual aspect
+  \item Events (\textbf{Controller}): which behavior associate to elements' events
+  \item Application logic (\textbf{Model}):  must remain, as far as possible, separate from user interface.
+\end{itemize}
+
+\begin{center}
+  \begin{minipage}[t]{0.5\linewidth}
+    \begin{minipage}[t]{0.45\linewidth}
+
+      \centering
+      \includegraphics[width=0.7\linewidth]{content/chapters/images/2026-05-23-14-00-23.png}
+      \captionof{figure}{MVC}
+
+      \includegraphics[width=\linewidth]{content/chapters/images/2026-05-23-14-05-32.png}
+
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.45\linewidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]{content/chapters/images/2026-05-23-14-00-48.png}
+      \captionof{figure}{MVP}
+      \includegraphics[width=\linewidth]{content/chapters/images/2026-05-23-14-05-59.png}
+    \end{minipage}
+  \end{minipage}
+\end{center}
+
+
+\subsection{Execution flow}
+
+There is no predefined order of execution. Operation are performed in response to external
+events (e.g. mouse click). Event handling is serialized. To execute operations in parallel threads must be
+used. Method main in GUIs has the only goal of instantiating the graphical elements
+
+\section{Summary}
+
+Architectural patterns deal with overall system
+structure. They provide a unique metaphor for the system
+(e.g. pipe and filters). They address specific domains (e.g. distribution or
+interaction) and system evolvability
+
+
+
