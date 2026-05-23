@@ -2,12 +2,6 @@
 
 The scalability dimension of software architecture can be represented by the following figure:
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.25\linewidth]{content/chapters/images/2026-04-11-11-42-08.png}
-\end{figure}
-
-
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
@@ -27,11 +21,20 @@ The scalability dimension of software architecture can be represented by the fol
   \end{tabularx}
 \end{table}
 
+\begin{center}
+  \begin{minipage}{0.6\linewidth}
+    \begin{minipage}{0.47\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{content/chapters/images/2026-04-11-11-42-08.png}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.47\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{content/chapters/images/2026-04-11-12-18-32.png}
+    \end{minipage}
+  \end{minipage}
+\end{center}
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.5\linewidth]{content/chapters/images/2026-04-11-12-18-32.png}
-\end{figure}
 
 \subsection{Monolith vs. Microservices}
 
@@ -51,7 +54,7 @@ The scalability dimension of software architecture can be represented by the fol
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-04-11-12-21-52.png}
+    \includegraphics[width=0.7\linewidth]{content/chapters/images/2026-04-11-12-21-52.png}
   \end{minipage}
 \end{flushleft}
 
@@ -81,33 +84,37 @@ The scalability dimension of software architecture can be represented by the fol
   \end{minipage}
 \end{flushleft}
 
-\paragraph{Domain model Example}
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.3\linewidth]{content/chapters/images/2026-04-11-12-26-07.png}
-\end{figure}
 
-\subsubsection{User stories}
-
-\begin{table}[h!]
-  \renewcommand{\arraystretch}{1.4}
-  \centering
-  \begin{tabular}{l l l}
-    \toprule
-    \textbf{Actor}   & \textbf{Goal}   & \textbf{Services} \\
-    \midrule
-    Consumer         & Create order    & Order             \\
-    Restaurant       & Accept order    & Order             \\
-    Restaurant       & Complete order  & Kitchen           \\
-    Courier          & Update location & Delivery          \\
-    Courier          & Pick up         & Delivery          \\
-    Courier          & Delivery        & Delivery          \\
-    Delivery company & Manage couriers & Courier           \\
-    Delivery company & Courier payment & Accounting        \\
-    \bottomrule
-  \end{tabular}
-\end{table}
+\begin{center}
+  \begin{minipage}[t]{0.49\linewidth}
+    \vspace{0pt}
+    \subsubsection{Domain model Example}
+    \centering
+    \includegraphics[width=0.6\linewidth]{content/chapters/images/2026-04-11-12-26-07.png}
+  \end{minipage}%
+  \hfill%
+  \begin{minipage}[t]{0.49\linewidth}
+    \vspace{0pt}
+    \subsubsection*{User stories}
+    \renewcommand{\arraystretch}{1.4}
+    \centering
+    \begin{tabular}{l l l}
+      \toprule
+      \textbf{Actor}   & \textbf{Goal}   & \textbf{Services} \\
+      \midrule
+      Consumer         & Create order    & Order             \\
+      Restaurant       & Accept order    & Order             \\
+      Restaurant       & Complete order  & Kitchen           \\
+      Courier          & Update location & Delivery          \\
+      Courier          & Pick up         & Delivery          \\
+      Courier          & Delivery        & Delivery          \\
+      Delivery company & Manage couriers & Courier           \\
+      Delivery company & Courier payment & Accounting        \\
+      \bottomrule
+    \end{tabular}
+  \end{minipage}
+\end{center}
 
 
 
@@ -135,7 +142,7 @@ The scalability dimension of software architecture can be represented by the fol
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-04-11-12-34-15.png}
+    \includegraphics[width=0.8\linewidth]{content/chapters/images/2026-04-11-12-34-15.png}
   \end{minipage}
 \end{flushleft}
 
@@ -146,66 +153,70 @@ The scalability dimension of software architecture can be represented by the fol
 together against the same kinds of changes. A change that affects a package
 affects all the classes in that package.
 
-\subsubsection{Decomposition obstacles}
-\begin{itemize}
-  \item Network latency
-  \item Reduced availability due to synchronous communication
-  \item Data consistency across services
-  \item Obtaining a consistent view of the data
-  \item Good classes
-\end{itemize}
+\subsubsection{Decomposition obstacles}: Network latency, Reduced availability due to synchronous communication, Data consistency across services, Obtaining a consistent view of the data, Good classes
 
 
 \section{Business logic}
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.3\linewidth]{content/chapters/images/2026-04-11-12-45-11.png}
-\end{figure}
-
-\subsection{Transaction script}
-When you have simple business logic that
-consist of a sequence of steps.
+\begin{flushleft}
+  \begin{minipage}{0.65\linewidth}
+    \raggedright
+    \subsection{Transaction script}
+    When you have simple business logic that
+    consist of a sequence of steps.
 
 
-Organize business logic by procedures
-where each procedure handles a single
-request from the presentation.
+    Organize business logic by procedures
+    where each procedure handles a single
+    request from the presentation.
 
-One service class with a method for each procedure. Several data classes.
+    One service class with a method for each procedure. Several data classes.
 
-Consequences:
+    Consequences:
 
-\begin{itemize}
-  \item All the code for a request in a single place
-  \item Code duplication for similar requests
-  \item Difficult to maintain and refactor
-\end{itemize}
-
-
-\subsection{Domain model}
-When you have complex business logic
-
-Adopt recommended object-oriented
-methods to create classes that encapsulate
-both code and data, using the DDD approach.
-
-Consequences:
-
-\begin{itemize}
-  \item Code for a request is spread among classes
-  \item No code duplication
-  \item Easy to maintain and refactor
-  \item Easy to extend with Strategy or Template Method patterns
-\end{itemize}
-
-\subsection{Ports \& Adapters (hex)}
+    \begin{itemize}
+      \item All the code for a request in a single place
+      \item Code duplication for similar requests
+      \item Difficult to maintain and refactor
+    \end{itemize}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{content/chapters/images/2026-04-11-12-45-11.png}
+  \end{minipage}
+\end{flushleft}
 
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.3\linewidth]{content/chapters/images/2026-04-11-12-46-25.png}
-\end{figure}
+
+
+
+\begin{flushleft}
+  \begin{minipage}{0.65\linewidth}
+    \raggedright
+    \subsection{Domain model}
+    When you have complex business logic
+
+    Adopt recommended object-oriented
+    methods to create classes that encapsulate
+    both code and data, using the DDD approach.
+
+    Consequences:
+
+    \begin{itemize}
+      \item Code for a request is spread among classes
+      \item No code duplication
+      \item Easy to maintain and refactor
+      \item Easy to extend with Strategy or Template Method patterns
+    \end{itemize}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{content/chapters/images/2026-04-11-12-46-25.png}
+    \captionof{figure}{Ports \& Adapters (hex)}
+  \end{minipage}
+\end{flushleft}
 
 
 \section{Domain Driven Design - DDD}
@@ -241,40 +252,51 @@ other in order to enable communication.
   \item Service - Implements business logic that does not belong to a single entity
 \end{itemize}
 
-\subsection{Domain boundaries}
-
-Often domain models have fuzzy
-boundaries. All strictly related concepts should
-belong to the same context. E.g. \verb|Order| and \verb|OrderLineItem| classes.
-
-Not keeping together such classes might
-result in violations of business rules or
-invariants, upon updates. E.g. minimum amount for an order.
-
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.3\linewidth]{content/chapters/images/2026-04-11-12-56-55.png}
-\end{figure}
 
 
-\subsection{Aggregate pattern}
-Organize a domain model as a collection
-of aggregates, each of which is a graph
-of objects that can be treated as a unit.
+\begin{center}
+  \begin{minipage}{0.65\linewidth}
+    \subsection{Domain boundaries}
 
-Decompose domain model into chunks:
+    Often domain models have fuzzy
+    boundaries. All strictly related concepts should
+    belong to the same context. E.g. \verb|Order| and \verb|OrderLineItem| classes.
 
-\begin{itemize}
-  \item Self contained units
-  \item Easier to understand
-  \item Clarify scope of operations
-  \item All elements share the same life cycle
-\end{itemize}
+    Not keeping together such classes might
+    result in violations of business rules or
+    invariants, upon updates. E.g. minimum amount for an order.
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.3\linewidth]{content/chapters/images/2026-04-11-12-58-44.png}
-\end{figure}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{content/chapters/images/2026-04-11-12-56-55.png}
+  \end{minipage}
+\end{center}
+
+\begin{flushleft}
+  \begin{minipage}{0.65\linewidth}
+    \raggedright
+    \subsection{Aggregate pattern}
+    Organize a domain model as a collection
+    of aggregates, each of which is a graph
+    of objects that can be treated as a unit.
+
+    Decompose domain model into chunks:
+
+    \begin{itemize}
+      \item Self contained units
+      \item Easier to understand
+      \item Clarify scope of operations
+      \item All elements share the same life cycle
+    \end{itemize}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{content/chapters/images/2026-04-11-12-58-44.png}
+  \end{minipage}
+\end{flushleft}
 
 \subsection{Rule: reference roots only}
 
@@ -396,24 +418,27 @@ value object, also metadata, e.g., event ID, timestamp
 
 \section{Communication}
 
+\begin{flushleft}
+  \begin{minipage}{0.65\linewidth}
+    \raggedright
+    Ensure agreement on service interaction
+    mechanism to avoid late integration
+    issues:
 
+    \begin{itemize}
+      \item Define the interface (using an IDL)
+      \item Review with client services' developers
+      \item Iterate to reach consensus
+      \item Start implementation of services
+    \end{itemize}
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.25\linewidth]{content/chapters/images/2026-04-11-13-22-15.png}
-\end{figure}
-
-
-Ensure agreement on service interaction
-mechanism to avoid late integration
-issues:
-
-\begin{itemize}
-  \item Define the interface (using an IDL)
-  \item Review with client services' developers
-  \item Iterate to reach consensus
-  \item Start implementation of services
-\end{itemize}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{content/chapters/images/2026-04-11-13-22-15.png}
+  \end{minipage}
+\end{flushleft}
 
 
 \subsection{API evolution}
@@ -495,14 +520,7 @@ network location of your service.
 
 
 In microservices architectures service
-instances change continuously due to:
-
-\begin{itemize}
-  \item Autoscaling
-  \item Failures
-  \item Updates
-\end{itemize}
-
+instances change continuously due to: Autoscaling, Failures, Updates.
 
 
 \begin{flushleft}
@@ -520,7 +538,7 @@ instances change continuously due to:
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-04-11-13-35-30.png}
+    \includegraphics[width=0.7\linewidth]{content/chapters/images/2026-04-11-13-35-30.png}
   \end{minipage}
 \end{flushleft}
 
@@ -541,7 +559,7 @@ instances change continuously due to:
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-04-11-13-35-54.png}
+    \includegraphics[width=0.7\linewidth]{content/chapters/images/2026-04-11-13-35-54.png}
   \end{minipage}
 \end{flushleft}
 
@@ -569,7 +587,7 @@ instances change continuously due to:
   \begin{minipage}{0.25\linewidth}
     \centering
 
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-04-11-13-47-31.png}
+    \includegraphics[width=0.7\linewidth]{content/chapters/images/2026-04-11-13-47-31.png}
   \end{minipage}
 \end{flushleft}
 
@@ -580,23 +598,34 @@ instances change continuously due to:
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=0.4\linewidth]{content/chapters/images/2026-04-11-13-38-57.png}
+  \includegraphics[width=0.3\linewidth]{content/chapters/images/2026-04-11-13-38-57.png}
 \end{figure}
 
 
-\subsection{Duplicate messages}
-Failures of client, server, or broker might represent a problem. Message are guaranteed to be delivered at least once, but not only once. Possible countermeasures:
-\begin{itemize}
-  \item Idempotent messages
-  \item Message tracking
-\end{itemize}
+\begin{flushleft}
+  \begin{minipage}[t]{0.49\linewidth}
+    \vspace{0pt}
+    \subsection{Duplicate messages}
+    Failures of client, server, or broker might represent a problem.
+    Message are guaranteed to be delivered at least once, but not only once.
+    Possible countermeasures:
+    \begin{itemize}
+      \item Idempotent messages
+      \item Message tracking
+    \end{itemize}
+  \end{minipage}%
+  \hfill%
+  \begin{minipage}[t]{0.49\linewidth}
+    \vspace{0pt}
+    \subsection{Transactional messaging}
+    Use a db table as a message queue. Keep in the same transaction:
+    \begin{itemize}
+      \item Db application update
+      \item Message queueing
+    \end{itemize}
+  \end{minipage}
+\end{flushleft}
 
-\subsection{Transactional messaging}
-Use a db table as a message queue. Keep in the same transaction:
-\begin{itemize}
-  \item Db application update
-  \item Message queueing
-\end{itemize}
 
 \begin{flushleft}
   \begin{minipage}{0.65\linewidth}
@@ -646,12 +675,8 @@ Use a db table as a message queue. Keep in the same transaction:
 
 \subsection{Transactions in a monolith}
 ACID db transaction : Atomicity, Consistency, Isolation, Durability.
-Lack of isolation leads to:
-\begin{itemize}
-  \item Lost updates
-  \item Dirty reads
-  \item Nonrepeatable reads
-\end{itemize}
+Lack of isolation leads to: \textbf{Lost updates}, \textbf{Dirty reads}, \textbf{Nonrepeatable reads}
+
 
 \paragraph{Example: confirm order}
 \begin{itemize}
@@ -739,7 +764,7 @@ Event sourcing is an event-centric technique for implementing business logic and
   \end{tabularx}
 \end{table}
 
-\newpage
+
 \section{Queries}
 
 Queries can be Simple (require data from a single \(\mu\)S db) or Composed (required data from multiple \(\mu\)S dbs).
@@ -757,7 +782,7 @@ Queries can be Simple (require data from a single \(\mu\)S db) or Composed (requ
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-04-11-14-01-58.png}
+    \includegraphics[width=0.7\linewidth]{content/chapters/images/2026-04-11-14-01-58.png}
   \end{minipage}
 \end{flushleft}
 
@@ -777,16 +802,17 @@ Queries can be Simple (require data from a single \(\mu\)S db) or Composed (requ
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
-    \includegraphics[width=0.65\linewidth]{content/chapters/images/2026-04-11-14-03-09.png}
+    \includegraphics[width=0.5\linewidth]{content/chapters/images/2026-04-11-14-03-09.png}
   \end{minipage}
 \end{flushleft}
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=0.45\linewidth]{content/chapters/images/2026-04-11-16-39-52.png}
+  \includegraphics[width=0.3\linewidth]{content/chapters/images/2026-04-11-16-39-52.png}
 \end{figure}
 
 
+\newpage
 \section{External API}
 External clients have low bandwidth (negative impact on UX) and lack of encapsulation. Different communication mechanisms are used.
 Possible solutions:
@@ -835,7 +861,7 @@ Possible solutions:
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-04-11-14-06-47.png}
+    \includegraphics[width=0.8\linewidth]{content/chapters/images/2026-04-11-14-06-47.png}
   \end{minipage}
 \end{flushleft}
 
@@ -848,9 +874,8 @@ Possible solutions:
 \end{itemize}
 
 \begin{center}
-  \begin{minipage}{0.75\linewidth}
+  \begin{minipage}{0.6\linewidth}
     \begin{minipage}[t]{0.45\linewidth}
-
       \centering
       \includegraphics[width=0.8\linewidth]{content/chapters/images/2026-04-11-16-46-51.png}
       \captionof{figure}{New features as services}
