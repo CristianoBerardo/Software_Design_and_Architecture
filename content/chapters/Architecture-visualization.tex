@@ -1,13 +1,9 @@
 \chapter{Architecture visualization: C4 notation}
 
-\section{Visualizing software architecture}
+\section{Issues in sw architecture visualization}
 There are not only one diagrams to visualize software architecture,
 but many of them.
-
 Variety of goals, stakeholders, focus, etc.
-
-
-\section{Issues in sw architecture visualization}
 
 \begin{itemize}
   \item Purpose of elements (boxes, arrows, etc.)
@@ -48,7 +44,7 @@ levels of abstraction to use with different stakeholders.
   \hfill
   \begin{minipage}{0.27\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{images/Architecture-visualization/AV-esempio1.png}
+    \includegraphics[width=0.7\linewidth]{images/Architecture-visualization/AV-esempio1.png}
     \captionof{figure}{Static structure}
   \end{minipage}
 \end{flushleft}
@@ -57,33 +53,20 @@ levels of abstraction to use with different stakeholders.
 A boundary inside which some code is executed or some data is stored.
 Containers are \textbf{separately deployable}.
 
-\paragraph{Examples: }
-\begin{itemize}
-  \item Application (server-side or client side)
-  \item Database, file system, etc.
-  \item Microservice (if not a system per se)
-  \item Mobile app
-  \item Script (python, shell, R, etc.)
-\end{itemize}
+\paragraph{Examples:} Application (server-side or client side), Database, file system, etc., Microservice (if not a system per se), Mobile app, Script (python, shell, R, etc.)
+
 
 
 \subsection{Component}
 
-A grouping of related functionality encapsulated behind a well-defined interface
-
+A grouping of related functionality encapsulated behind a well-defined interface.
 Components are \textbf{NOT} separately deployable and how
 components are packaged is not relevant at this level.
 
 \subsection{Code}
 
-The basic building blocks of a programming language:
-\begin{itemize}
-  \item classes,
-  \item interfaces,
-  \item functions,
-  \item objects,
-  \item enums
-\end{itemize}
+The basic building blocks of a programming language: classes, interfaces, functions, objects, enums
+
 
 
 \section{Different type of diagrams}
@@ -110,23 +93,13 @@ Using the SPG, Solidarity Purchasing Group, presented before, as an example, we 
 
 \section{Level 1: Context diagram}
 
-It helps answering such questions:
+It helps answering such questions: What is the software system that we are building (or have built)?, Who is using it?, How does it fit in with the existing environment?
 
-\begin{itemize}
-  \item What is the software system that we are building (or have built)?
-  \item Who is using it?
-  \item How does it fit in with the existing environment?
-\end{itemize}
 
 It is \textbf{required}: it is the starting point for communicating with any stakeholder
+The key elements of a context diagram are: \textbf{People} who will use the software system, Other \textbf{software} systems with which the reference system interacts, + optionally the \textbf{organization boundary}
 
-The key elements of a context diagram are:
 
-\begin{itemize}
-  \item People who will use the software system
-  \item Other software systems with which the reference system interacts
-  \item + optionally the organization boundary
-\end{itemize}
 Interaction between elements: Directed arrows with high-level information about
 the purpose of that interaction.
 We can connect elements with arrows. It is
@@ -135,7 +108,7 @@ better to use only one way arrows and not to use bidirectional once.
 
 
 \begin{flushleft}
-  \begin{minipage}{0.65\linewidth}
+  \begin{minipage}[t]{0.47\linewidth}
     \raggedright
     \subsection{Information reported - People}
 
@@ -149,15 +122,7 @@ better to use only one way arrows and not to use bidirectional once.
 
   \end{minipage}%
   \hfill
-  \begin{minipage}{0.3\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-03-22-11-53-33.png}
-  \end{minipage}
-\end{flushleft}
-
-
-\begin{flushleft}
-  \begin{minipage}{0.65\linewidth}
+  \begin{minipage}[t]{0.47\linewidth}
     \raggedright
     \subsection{Information reported - Software system}
 
@@ -168,11 +133,6 @@ better to use only one way arrows and not to use bidirectional once.
       \item \textbf{Description}: A short description of the software system, its goal
             and responsibilities, etc.
     \end{itemize}
-  \end{minipage}%
-  \hfill
-  \begin{minipage}{0.3\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-03-22-11-58-07.png}
   \end{minipage}
 \end{flushleft}
 
@@ -192,11 +152,6 @@ distributed across elements and how containers communicate with each other
 
 Every container must be deployable independently and the diagram is \textbf{required} and readed by
 software development adn operations stuff.
-
-
-
-
-
 
 \begin{flushleft}
   \begin{minipage}{0.65\linewidth}
@@ -221,7 +176,7 @@ software development adn operations stuff.
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-03-22-12-05-11.png}
+    \includegraphics[width=0.7\linewidth]{content/chapters/images/2026-03-22-12-05-11.png}
   \end{minipage}
 \end{flushleft}
 
@@ -250,14 +205,14 @@ software development adn operations stuff.
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-03-22-12-08-20.png}
+    \includegraphics[width=0.7\linewidth]{content/chapters/images/2026-03-22-12-08-20.png}
   \end{minipage}
 \end{flushleft}
 
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=0.6\linewidth]{content/chapters/images/2026-03-22-12-07-46.png}
+  \includegraphics[width=0.5\linewidth]{content/chapters/images/2026-03-22-12-07-46.png}
 \end{figure}
 
 \section{Level 3: Components diagram}
@@ -305,17 +260,17 @@ It is for technical people within the software development team.
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=0.65\linewidth]{content/chapters/images/2026-03-22-12-24-41.png}
+  \includegraphics[width=0.5\linewidth]{content/chapters/images/2026-03-22-12-24-41.png}
 \end{figure}
 
 The UML component diagram is useful to provide more detailed documentation.
 
 
 \begin{center}
-  \begin{minipage}{0.75\linewidth}
+  \begin{minipage}{0.5\linewidth}
     \begin{minipage}{0.47\linewidth}
       \centering
-      \includegraphics[width=\linewidth]{content/chapters/images/2026-03-22-12-25-47.png}
+      \includegraphics[width=0.7\linewidth]{content/chapters/images/2026-03-22-12-25-47.png}
     \end{minipage}%
     \hfill
     \begin{minipage}{0.47\linewidth}
@@ -332,7 +287,7 @@ delegated to an internal class.
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=0.65\linewidth]{content/chapters/images/2026-03-22-12-26-49.png}
+  \includegraphics[width=0.4\linewidth]{content/chapters/images/2026-03-22-12-26-49.png}
 \end{figure}
 
 
