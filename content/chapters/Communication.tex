@@ -1,29 +1,37 @@
 \chapter{Communication}
 
-The communication between components can be implemented in different ways:
+\begin{flushleft}
+  \begin{minipage}[t]{0.47\linewidth}
+    \raggedright
+    The communication between components can be implemented in different ways:
 
-\begin{itemize}
-  \item Local vs Distributed
-  \item Synchronous vs Asynchronous
-  \item One-to-one vs One-to-many
-  \item One-way vs Two-way
-  \item Call vs Message vs Shared memory
-\end{itemize}
+    \begin{itemize}
+      \item Local vs Distributed
+      \item Synchronous vs Asynchronous
+      \item One-to-one vs One-to-many
+      \item One-way vs Two-way
+      \item Call vs Message vs Shared memory
+    \end{itemize}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.47\linewidth}
+    \raggedright
+    There are some distributed computing fallacies that are worth mentioning:
 
-There are some distributed computing fallacies that are worth mentioning:
+    \begin{enumerate}
 
-\begin{enumerate}
+      \item The network is reliable;
+      \item Latency is zero;
+      \item Bandwidth is infinite;
+      \item The network is secure;
+      \item Topology doesn't change;
+      \item There is one administrator;
+      \item Transport cost is zero;
+      \item The network is homogeneous.
 
-  \item The network is reliable;
-  \item Latency is zero;
-  \item Bandwidth is infinite;
-  \item The network is secure;
-  \item Topology doesn't change;
-  \item There is one administrator;
-  \item Transport cost is zero;
-  \item The network is homogeneous.
-
-\end{enumerate}
+    \end{enumerate}
+  \end{minipage}
+\end{flushleft}
 
 \paragraph{Network latency} - Due to decomposition an operation may result into
 a series of round-trips between two services.
@@ -50,23 +58,30 @@ method calls,
 
 \subsection{One-to-one communication}
 
-\paragraph{Request-response} - A client makes a request to a service and waits
-for a response. The client blocks while waiting.
+\begin{itemize}
 
-\paragraph{Asynchronous request/response} - A client sends a request to a
-service, which replies asynchronously. The client doesn't block while waiting.
+  \item \textbf{Request-response} - A client makes a request to a service and waits
+        for a response. The client blocks while waiting.
 
-\paragraph{One-way notifications} - A client sends a request to a service, but no
-reply is expected or sent.
+  \item \textbf{Asynchronous request/response} - A client sends a request to a
+        service, which replies asynchronously. The client doesn't block while waiting.
 
+  \item \textbf{One-way notifications} - A client sends a request to a service, but no
+        reply is expected or sent.
+
+\end{itemize}
 
 \subsection{One-to-many communication}
 
-\paragraph{Publish/subscribe} - A client publishes a notification message, which
-is consumed by zero or more interested services.
+\begin{itemize}
 
-\paragraph{Publish/async. response} - A client publishes a request message and
-then waits for a certain amount of time for responses from interested services.
+  \item \textbf{Publish/subscribe} - A client publishes a notification message, which
+        is consumed by zero or more interested services.
+
+  \item \textbf{Publish/async. response} - A client publishes a request message and
+        then waits for a certain amount of time for responses from interested services.
+
+\end{itemize}
 
 \section{Messaging}
 Messages are exchanged over message channels. A sender writes a message to a
@@ -74,33 +89,27 @@ channel, and a receiver reads messages from a channel. The communication is
 asynchronous, the sender doesn't block waiting for a reply
 
 \paragraph{Header}
-The header contains metadata about the message, such as:
-
-\begin{itemize}
-  \item Message ID
-  \item Return address
-  \item Metadata that describes the content of the message
-  \item Collection of key-value pairs useful for routing, filtering, etc.
-\end{itemize}
+The header contains metadata about the message, such as: Message ID, Return address, Metadata that describes the content of the message, Collection of key-value pairs useful for routing, filtering, etc.
 
 \paragraph{Body}
 The body contains the data being sent in either text or binary format.
 
 \subsection{Message types}
 
-\paragraph{Command} - This is equivalent of an RPC request. It specifies the
-operation to invoke and its parameters.
+\begin{itemize}
 
-\paragraph{Document} - Contains only data. The receiver decides how to interpret
-it, e.g. a reply to a command
+  \item \textbf{Command} - This is equivalent of an RPC request. It specifies the
+        operation to invoke and its parameters.
 
-\paragraph{Event} -  Indicates that something notable has occurred. An event is
-often a domain event, which represents a state change of a domain object.
+  \item \textbf{Document} - Contains only data. The receiver decides how to interpret
+        it, e.g. a reply to a command
 
+  \item \textbf{Event} -  Indicates that something notable has occurred. An event is
+        often a domain event, which represents a state change of a domain object.
+
+\end{itemize}
 
 \section{Channel}
-Abstraction of the mechanism to transfer
-messages.
 
 \subsection{Point-to-point channels}
 Delivers a message to exactly one of the
@@ -117,14 +126,16 @@ one-to-many interaction styles
 
 
 \begin{center}
-  \begin{minipage}{0.48\linewidth}
-    \centering
-    \includegraphics[width=0.8\linewidth]{content/chapters/images/2026-04-11-10-58-16.png}
-  \end{minipage}%
-  \hfill
-  \begin{minipage}{0.48\linewidth}
-    \centering
-    \includegraphics[width=0.8\linewidth]{content/chapters/images/2026-04-11-10-59-30.png}
+  \begin{minipage}{0.8\linewidth}
+    \begin{minipage}{0.48\linewidth}
+      \centering
+      \includegraphics[width=0.8\linewidth]{content/chapters/images/2026-04-11-10-58-16.png}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.48\linewidth}
+      \centering
+      \includegraphics[width=0.8\linewidth]{content/chapters/images/2026-04-11-10-59-30.png}
+    \end{minipage}
   \end{minipage}
 \end{center}
 
@@ -144,7 +155,7 @@ one-to-many interaction styles
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{0.75\textwidth}{X X}
+  \begin{tabular}{ll}
     \toprule
     \textbf{Pros}                      & \textbf{Cons}                                                 \\
     \midrule
@@ -152,7 +163,7 @@ one-to-many interaction styles
     No centralized point of failure    & Reduced availability, both must be available at the same time \\
     Simplicity                         & Hard to have guaranteed delivery                              \\
     \bottomrule
-  \end{tabularx}
+  \end{tabular}
 \end{table}
 
 
@@ -163,15 +174,15 @@ Broker is an intermediary components through which all messages flow.
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{0.75\textwidth}{X X}
+  \begin{tabular}{ll}
     \toprule
-    \textbf{Pros}                                                               & \textbf{Cons}                    \\
+    \textbf{Pros}                                               & \textbf{Cons}                    \\
     \midrule
-    Loose coupling. No need to know each other or to be active at the same time & Potential performance bottleneck \\
-                                                                                & Single point of failure          \\
-                                                                                & Additional complexity            \\
+    Loose coupling.                                             & Potential performance bottleneck \\
+    No need to know each other or to be active at the same time & Single point of failure          \\
+                                                                & Additional complexity            \\
     \bottomrule
-  \end{tabularx}
+  \end{tabular}
 \end{table}
 
 
