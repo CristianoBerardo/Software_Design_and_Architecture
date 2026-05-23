@@ -21,7 +21,7 @@
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-04-25-11-40-35.png}
+    \includegraphics[width=0.7\linewidth]{content/chapters/images/2026-04-25-11-40-35.png}
     \captionof{figure}{Scoping}
   \end{minipage}
 \end{flushleft}
@@ -29,57 +29,58 @@
 
 \section{Architectural styles}
 
-\begin{itemize}
-  \item Monolithic = single deployment unit of all code
-  \item One architectural quantum
-  \item Distributed = multiple deployment units connected through remote access protocols
-\end{itemize}
-
-
-\begin{table}[h!]
-  \renewcommand{\arraystretch}{1.4}
-  \centering
-  \begin{tabular}{l l }
-    \toprule
-    \textbf{Monolithic}       & \textbf{Distributed} \\
-    \midrule
-    Layered architecture      & Service-based        \\
-    Pipeline architecture     & Event-driven         \\
-    Modular monolithic style  & Space-based          \\
-    Micro-kernel architecture & Service-oriented     \\
-                              & Microservices        \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
+\begin{flushleft}
+  \begin{minipage}[t]{0.49\linewidth}
+    \vspace{0pt}
+    \begin{itemize}
+      \item Monolithic = single deployment unit of all code
+      \item One architectural quantum
+      \item Distributed = multiple deployment units connected through remote access protocols
+    \end{itemize}
+  \end{minipage}%
+  \hfill%
+  \begin{minipage}[t]{0.49\linewidth}
+    \vspace{0pt}
+    \renewcommand{\arraystretch}{1.4}
+    \centering
+    \begin{tabular}{l l}
+      \toprule
+      \textbf{Monolithic}       & \textbf{Distributed} \\
+      \midrule
+      Layered architecture      & Service-based        \\
+      Pipeline architecture     & Event-driven         \\
+      Modular monolithic style  & Space-based          \\
+      Micro-kernel architecture & Service-oriented     \\
+                                & Microservices        \\
+      \bottomrule
+    \end{tabular}
+  \end{minipage}
+\end{flushleft}
 
 
 \section{Layered architecture - n tier}
 
-Also known as n-tier architecture. Technical partioning.
-Each layer is independent and has a specific responsibility.
-A layer represents a function of the system.
-Pro: testability
+\begin{center}
+  \begin{minipage}{0.65\linewidth}
+    Also known as n-tier architecture. Technical partioning.
+    Each layer is independent and has a specific responsibility.
+    A layer represents a function of the system.
+    Pro: testability
 
-Common patterns are:
-\begin{itemize}
-  \item Presentation layer
-  \item Business logic layer
-  \item Persistence layer
-  \item Database layer
-\end{itemize}
+    Common patterns are: \textbf{Presentation} layer, \textbf{Business} logic layer, \textbf{Persistence} layer, \textbf{Database} layer
 
 
-In the layered architecture, the layers can communicate only with the adjacent layers.
-Teams needing structured development.
+    In the layered architecture, the layers can communicate only with the adjacent layers.
+    Teams needing structured development.
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{content/chapters/images/2026-04-25-11-49-01.png}
+    \captionof{figure}{Layered architecture - variations}
+  \end{minipage}
+\end{center}
 
-\subsection{Layered architecture - variations}
-
-
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.25\linewidth]{content/chapters/images/2026-04-25-11-49-01.png}
-\end{figure}
 
 \subsection{Addding layers}
 New layers to enforce architectural constraints, helps controll access and dependencies.
@@ -132,7 +133,7 @@ Synkholes acceptable threshold: $20\%$  manageable, $80\%$ change architecture s
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{0.9\textwidth}{X X}
+  \begin{tabularx}{\textwidth}{X X}
     \toprule
     \textbf{When to use}                                            & \textbf{When not to use}                                 \\
     \midrule
@@ -148,8 +149,6 @@ Synkholes acceptable threshold: $20\%$  manageable, $80\%$ change architecture s
 
 \section{Modular monolithic style}
 
-
-
 \begin{center}
   \begin{minipage}{0.65\linewidth}
     Domain partitioned: each module encapsulates a business capability.
@@ -161,45 +160,48 @@ Synkholes acceptable threshold: $20\%$  manageable, $80\%$ change architecture s
     In this we decupled all the modules like Customer, Order, etc.
     The team is also oragnized in different way before a team for each layer,
     now we have a team for each modules or a pool of modules.
-
-    \subsubsection{Data topology}
-
-    Also in this style we can have single database ormore domain-specific databases for the best performance.
-
-    \subsubsection{Interaction between modules}
-
-    The modules \textbf{communicate directly} (peer to peer) or \textbf{through a mediator}
-    the gool is orchestrate different modules.
-
   \end{minipage}%
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-04-25-12-02-42.png}
+    \includegraphics[width=0.6\linewidth]{content/chapters/images/2026-04-25-12-02-42.png}
   \end{minipage}
 \end{center}
 
-\subsection{Layered vs modular: components organization}
+\subsubsection{Data topology}
 
-\begin{itemize}
-  \item Layered: com.app.presentation.customer.profile
-  \item Modular: com.app.customer.profile; com.app.customer.profile.presentation; \dots
-\end{itemize}
+Also in this style we can have single database ormore domain-specific databases for the best performance.
 
+\subsubsection{Interaction between modules}
 
-\subsection{Variations of modular monolithic style}
+The modules \textbf{communicate directly} (peer to peer) or \textbf{through a mediator}
+the gool is orchestrate different modules.
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.3\linewidth]{content/chapters/images/2026-04-25-12-06-52.png}
-\end{figure}
+\begin{flushleft}
+  \begin{minipage}{0.65\linewidth}
+    \raggedright
+    \subsection{Layered vs modular: components organization}
 
+    \begin{itemize}
+      \item Layered: com.app.presentation.customer.profile
+      \item Modular: com.app.customer.profile; com.app.customer.profile.presentation;
+    \end{itemize}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{content/chapters/images/2026-04-25-12-06-52.png}
+    \captionof{figure}{Variations of modular monolithic style}
+  \end{minipage}
+\end{flushleft}
+
+\newpage
 \subsection{Advantages and disadvantages of modular monolithic style}
 
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{0.9\textwidth}{X X}
+  \begin{tabular}{l l}
     \toprule
     \textbf{Key characteristics}                               & \textbf{Tradeoffs:
                                                                  }                          \\
@@ -211,13 +213,13 @@ Synkholes acceptable threshold: $20\%$  manageable, $80\%$ change architecture s
     Requires discipline to maintain boundaries                 & Harder team autonomy at scale              \\
                                                                & Risk of long start up                      \\
     \bottomrule
-  \end{tabularx}
+  \end{tabular}
 \end{table}
 
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{0.9\textwidth}{l X X X}
+  \begin{tabular}{l l l l}
     \toprule
                 & \textbf{Characteristic} & \textbf{Modular Monolith} & \textbf{Notes}                                   \\
     \midrule
@@ -234,14 +236,14 @@ Synkholes acceptable threshold: $20\%$  manageable, $80\%$ change architecture s
                 & Elasticity              & Very low                  &                                                  \\
                 & Fault tolerance         & Very low                  &                                                  \\
     \bottomrule
-  \end{tabularx}
+  \end{tabular}
 \end{table}
 
 
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{0.9\textwidth}{X X}
+  \begin{tabular}{l l}
     \toprule
     \textbf{When to use}                              & \textbf{When not to use}                                  \\
     \midrule
@@ -251,7 +253,7 @@ Synkholes acceptable threshold: $20\%$  manageable, $80\%$ change architecture s
     Teams working with DDD                            &                                                           \\
     Applications with strong domain boundaries        &                                                           \\
     \bottomrule
-  \end{tabularx}
+  \end{tabular}
 \end{table}
 
 \section{Pipeline architecture}
@@ -306,7 +308,7 @@ Synkholes acceptable threshold: $20\%$  manageable, $80\%$ change architecture s
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{0.9\textwidth}{X X}
+  \begin{tabular}{l l}
     \toprule
     \textbf{Key characteristics:}    & \textbf{Tradeoffs:}                  \\
     \midrule
@@ -315,13 +317,13 @@ Synkholes acceptable threshold: $20\%$  manageable, $80\%$ change architecture s
     Examples: Bash, Zsh, MapReduce   & Weak fit for complex business logic  \\
                                      & Data format coupling between filters \\
     \bottomrule
-  \end{tabularx}
+  \end{tabular}
 \end{table}
 
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{0.9\textwidth}{l X X X}
+  \begin{tabularx}{\textwidth}{l l l X}
     \toprule
                 & \textbf{Characteristic} & \textbf{Pipeline} & \textbf{Notes}                                                                  \\
     \midrule
@@ -344,7 +346,7 @@ Synkholes acceptable threshold: $20\%$  manageable, $80\%$ change architecture s
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{0.9\textwidth}{X X}
+  \begin{tabularx}{\textwidth}{X X}
     \toprule
     \textbf{When to use}                                            & \textbf{When not to use}                                        \\
     \midrule
@@ -374,15 +376,14 @@ Synkholes acceptable threshold: $20\%$  manageable, $80\%$ change architecture s
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
-    \includegraphics[width=0.7\linewidth]{content/chapters/images/2026-04-25-12-51-42.png}
+    \includegraphics[width=0.55\linewidth]{content/chapters/images/2026-04-25-12-51-42.png}
   \end{minipage}
 \end{center}
 
-\subsection{UI: variants}
-
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=0.5\linewidth]{content/chapters/images/2026-04-25-12-55-06.png}
+  \includegraphics[width=0.45\linewidth]{content/chapters/images/2026-04-25-12-55-06.png}
+  \caption{UI: variants}
 \end{figure}
 
 \subsection{Plug-in components}
@@ -402,7 +403,7 @@ Synkholes acceptable threshold: $20\%$  manageable, $80\%$ change architecture s
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{0.9\textwidth}{X X}
+  \begin{tabular}{l l}
     \toprule
     \textbf{Characteristics:}            & \textbf{Trade-offs:}                        \\
     \midrule
@@ -411,14 +412,14 @@ Synkholes acceptable threshold: $20\%$  manageable, $80\%$ change architecture s
     Supports product variability         & Testing combinations of plugins can be hard \\
     Stable core is critical              & Core design mistakes are costly             \\
     \bottomrule
-  \end{tabularx}
+  \end{tabular}
 \end{table}
 
 
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{0.9\textwidth}{X X}
+  \begin{tabular}{l l}
     \toprule
     \textbf{When to use}                & \textbf{When not to use}                \\
     \midrule
@@ -428,13 +429,13 @@ Synkholes acceptable threshold: $20\%$  manageable, $80\%$ change architecture s
     Customization-driven applications   &                                         \\
     Examples: browsers, IDEs, PMD, Jira &                                         \\
     \bottomrule
-  \end{tabularx}
+  \end{tabular}
 \end{table}
 
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{0.9\textwidth}{l X X X}
+  \begin{tabular}{l l l l}
     \toprule
                 & \textbf{Characteristic} & \textbf{Microkernel} & \textbf{Notes}                                                    \\
     \midrule
@@ -451,7 +452,7 @@ Synkholes acceptable threshold: $20\%$  manageable, $80\%$ change architecture s
                 & Elasticity              & Very low             &                                                                   \\
                 & Fault tolerance         & Very low             &                                                                   \\
     \bottomrule
-  \end{tabularx}
+  \end{tabular}
 \end{table}
 
 \section{Monolithic Styles - recap}
@@ -459,7 +460,7 @@ Synkholes acceptable threshold: $20\%$  manageable, $80\%$ change architecture s
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{\textwidth}{l l l l l l}
+  \begin{tabular}{l l l l l l}
     \toprule
                 & \textbf{Characteristic} & \textbf{Layered (n-tier)} & \textbf{Modular Monolith} & \textbf{Pipeline} & \textbf{Microkernel} \\
     \midrule
@@ -476,5 +477,5 @@ Synkholes acceptable threshold: $20\%$  manageable, $80\%$ change architecture s
                 & Elasticity              & Very low                  & Very low                  & Very low          & Very low             \\
                 & Fault tolerance         & Very low                  & Very low                  & Very low          & Very low             \\
     \bottomrule
-  \end{tabularx}
+  \end{tabular}
 \end{table}
