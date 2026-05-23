@@ -39,17 +39,17 @@ API gateway options between UI and domain services.
 
 \begin{center}
   \begin{minipage}[t]{0.7\linewidth}
-  \begin{minipage}[t]{0.45\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-05-20-21-48-20.png}
-    \captionof{figure}{UI options}
-  \end{minipage}%
-  \hfill
-  \begin{minipage}[t]{0.45\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-05-20-21-48-30.png}
-    \captionof{figure}{DB options}
-  \end{minipage}
+    \begin{minipage}[t]{0.45\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{content/chapters/images/2026-05-20-21-48-20.png}
+      \captionof{figure}{UI options}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.45\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{content/chapters/images/2026-05-20-21-48-30.png}
+      \captionof{figure}{DB options}
+    \end{minipage}
   \end{minipage}
 \end{center}
 
@@ -100,7 +100,7 @@ possible
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{\textwidth}{l X l X}
+  \begin{tabular}{l l l l}
     \toprule
      & \textbf{Characteristic} & \textbf{Rating} & \textbf{Notes}                               \\
     \midrule
@@ -120,7 +120,7 @@ possible
      & Elasticity              & Low             &                                              \\
      & Fault tolerance         & Medium          & Self-contained services                      \\
     \bottomrule
-  \end{tabularx}
+  \end{tabular}
 \end{table}
 
 \section{Microservices architecture}
@@ -162,32 +162,43 @@ Protocol-aware heterogenous interoperability
 \end{center}
 
 \subsection{Granularity of services}
-
-
 Extreme granularity may affect performances
 
-Main decision criteria for micro-services:
-\begin{itemize}
-  \item Purpose (i.e., problem domain)
-  \item (Avoid/minimize) transactions
-  \item Choreography
-\end{itemize}
+\begin{flushleft}
+  \begin{minipage}[t]{0.45\linewidth}
+    \raggedright
 
-Other aspects:
-\begin{itemize}
-  \item Data isolation: per service or per domain
-  \item API layer ``neutrality''
-  \item Frontends: monolithic vs coupling with backend services
-  \item Choreography vs orchestration
-\end{itemize}
+    Main decision criteria for micro-services:
+    \begin{itemize}
+      \item Purpose (i.e., problem domain)
+      \item (Avoid/minimize) transactions
+      \item Choreography
+    \end{itemize}
+
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.45\linewidth}
+    \raggedright
+    Other aspects:
+    \begin{itemize}
+      \item Data isolation: per service or per domain
+      \item API layer ``neutrality''
+      \item Frontends: monolithic vs coupling with backend services
+      \item Choreography vs orchestration
+    \end{itemize}
+
+  \end{minipage}
+\end{flushleft}
 
 
+
+\newpage
 \subsection{Microservices architecture: characteristics}
 
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{\textwidth}{l X l X}
+  \begin{tabularx}{\textwidth}{lllX}
     \toprule
      & \textbf{Characteristic} & \textbf{Rating} & \textbf{Notes}                                                                                  \\
     \midrule
@@ -216,36 +227,30 @@ Main implementation: choreographed and technically partitioned
 Decoupled event processing components asynchronously trigger and
 responds via events. Asynchronous fire-and-forget communication. Loose coupling.
 
-Four primary components:
-\begin{itemize}
-  \item Initiating event
-  \item Event broker
-  \item Event processor
-  \item Derived events
-\end{itemize}
+Four primary components: Initiating event, Event broker, Event processor, Derived events
 
 \begin{center}
-  \begin{minipage}{0.7\linewidth}
-    \begin{minipage}{0.45\linewidth}
+  \begin{minipage}{\linewidth}
+    \begin{minipage}{0.33\linewidth}
       \centering
       \includegraphics[width=\linewidth]{content/chapters/images/2026-05-21-10-21-35.png}
       \captionof{figure}{Event-driven architecture}
     \end{minipage}%
     \hfill
-    \begin{minipage}{0.45\linewidth}
+    \begin{minipage}{0.33\linewidth}
       \centering
       \includegraphics[width=\linewidth]{content/chapters/images/2026-05-21-10-21-55.png}
       \captionof{figure}{Fire and forget}
     \end{minipage}
+    \hfill
+    \begin{minipage}{0.33\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{content/chapters/images/2026-05-21-10-23-04.png}
+      \captionof{figure}{EDA processing - example with SPG}
+    \end{minipage}
   \end{minipage}
 \end{center}
 
-\paragraph{EDA processing - example with SPG}
-
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.3\linewidth]{content/chapters/images/2026-05-21-10-23-04.png}
-\end{figure}
 
 \subsection{Events vs messages}
 
@@ -311,8 +316,6 @@ Four primary components:
   \end{minipage}
 \end{flushleft}
 
-\paragraph{Event payload - Example}
-
 \begin{figure}[h!]
   \centering
   \includegraphics[width=0.4\linewidth]{content/chapters/images/2026-05-21-10-31-40.png}
@@ -344,20 +347,24 @@ Four primary components:
 \end{table}
 
 
-\subsection{Data loss prevention}
+\begin{flushleft}
+  \begin{minipage}{0.5\linewidth}
+    \raggedright
+    \subsection{Data loss prevention}
 
-\begin{enumerate}
-  \item While A publishes an event, it crashes before ack from event broker
-  \item B accepts an event, but it crashes before processing it
-  \item A data error prevents B from ensuring persistence
-\end{enumerate}
+    \begin{enumerate}
+      \item While A publishes an event, it crashes before ack from event broker
+      \item B accepts an event, but it crashes before processing it
+      \item A data error prevents B from ensuring persistence
+    \end{enumerate}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{content/chapters/images/2026-05-21-10-35-27.png}
+  \end{minipage}
+\end{flushleft}
 
-
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.3\linewidth]{content/chapters/images/2026-05-21-10-34-54.png}
-  \includegraphics[width=0.25\linewidth]{content/chapters/images/2026-05-21-10-35-27.png}
-\end{figure}
 
 
 \subsection{Request-reply processing}
@@ -366,11 +373,7 @@ It requires a request queue and a reply queue.
 Event producers waits until confirmation of event producer is
 retrieved fomr the reply queue.
 
-Two common implementations:
-\begin{itemize}
-  \item Correlation ID
-  \item Temporary queue with specific id
-\end{itemize}
+Two common implementations: Correlation \textbf{ID}, Temporary \textbf{queue} with specific id
 
 \section{Orchestrated EDA}
 
@@ -378,9 +381,7 @@ Two common implementations:
 \begin{center}
   \begin{minipage}{0.65\linewidth}
     Orchestration vs Choreography.
-
     Mediation by a specific component/service.
-
     Event mediator typically uses messages.
     The mediator is responsible of catching events and generate specific
     point-to-point derivated events. Usually with queues. Without further communicating its own actions (fire and forget principle)
@@ -391,7 +392,7 @@ Two common implementations:
   \hfill
   \begin{minipage}{0.3\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-05-21-10-38-58.png}
+    \includegraphics[width=0.8\linewidth]{content/chapters/images/2026-05-21-10-38-58.png}
   \end{minipage}
 \end{center}
 
@@ -525,65 +526,51 @@ Several factors influence the amount of data collisions:
 \end{figure}
 
 \subsection{Replicated vs distributed caching}
-= Asynchronous replication vs synchronous replication
-Replicated caching:
-
-\begin{itemize}
-  \item requires in-memory data grid, very fast
-  \item difficult with very high data volumes and frequent updates
-  \item possible also wih near-cache techniques: a caching server + partial front caches
-\end{itemize}
-
-\begin{table}[h!]
-  \renewcommand{\arraystretch}{1.4}
-  \centering
-  \begin{tabularx}{\textwidth}{X X}
-    \toprule
-    \textbf{} & \textbf{} \\
-    \midrule
-              &           \\
-              &           \\
-              &           \\
-              &           \\
-              &           \\
-    \bottomrule
-  \end{tabularx}
-\end{table}
-
-\section{SBA architecture - Usage}
-
-\begin{table}[h!]
-  \renewcommand{\arraystretch}{1.4}
-  \centering
-  \begin{tabularx}{\textwidth}{X X X}
-    \toprule
-    \textbf{Criteria} & \textbf{Replicated} & \textbf{Distributed} \\
-    \midrule
-    Optimization      & Performance         & Consistency          \\
-    Cache size        & Small               & Large                \\
-    Type of data      & Mostly static       & Highly dynamic       \\
-    Update frequency  & Low                 & High                 \\
-    Fault tolerance   & High                & Low                  \\
-    \bottomrule
-  \end{tabularx}
-\end{table}
 
 
-\subsection{When to use:}
+\begin{flushleft}
+  \begin{minipage}[t]{0.49\linewidth}
+    \vspace{0pt}
 
-\begin{itemize}
-  \item High volume applications
-  \item Large, concurrent user load
-  \item Low-latency systems
-\end{itemize}
+    = \textbf{Asynchronous} replication vs \textbf{synchronous} replication
+    Replicated caching:
 
+    \begin{itemize}
+      \item requires in-memory data grid, very fast
+      \item difficult with very high data volumes and frequent updates
+      \item possible also with near-cache techniques: a caching server + partial front caches
+    \end{itemize}
+  \end{minipage}%
+  \hfill%
+  \begin{minipage}[t]{0.49\linewidth}
+    \vspace{0pt}
+    \renewcommand{\arraystretch}{1.4}
+    \centering
+    \begin{tabular}{l l l}
+      \toprule
+      \textbf{Criteria} & \textbf{Replicated} & \textbf{Distributed} \\
+      \midrule
+      Optimization      & Performance         & Consistency          \\
+      Cache size        & Small               & Large                \\
+      Type of data      & Mostly static       & Highly dynamic       \\
+      Update frequency  & Low                 & High                 \\
+      Fault tolerance   & High                & Low                  \\
+      \bottomrule
+    \end{tabular}
+  \end{minipage}
+\end{flushleft}
+
+
+\subsection{SBA architecture - When to use}
+
+High volume applications - Large, concurrent user load - Low-latency systems
 
 \subsection{Space based architecture: characteristics}
 
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{\textwidth}{l l l X}
+  \begin{tabular}{l l l l}
     \toprule
     \textbf{}   & \textbf{Characteristic} & \textbf{Rating} & \textbf{Notes}                                                     \\
     \midrule
@@ -600,7 +587,7 @@ Replicated caching:
                 & Elasticity              & Very high       &                                                                    \\
                 & Fault tolerance         & Low             & Technically partitioned, distributed computing and data management \\
     \bottomrule
-  \end{tabularx}
+  \end{tabular}
 \end{table}
 
 
@@ -641,11 +628,6 @@ Replicated caching:
       \item \textbf{Application services:} one-off, single implementation services, typically not reusable
       \item \textbf{Infrastracture services:} Monitoring, authentication, logging
     \end{itemize}
-
-    \paragraph{Reasons for decay after the 2010s}
-    Domains concepts spread so thinely
-    that they were virtually ground to
-    dust
   \end{minipage}%
   \hfill
   \begin{minipage}{0.3\linewidth}
@@ -659,7 +641,7 @@ Replicated caching:
 \subsection{ODSA architecture: characteristics}
 
 \begin{table}[h!]
-  \renewcommand{\arraystretch}{1.4}
+  \renewcommand{\arraystretch}{1.3}
   \centering
   \begin{tabularx}{\textwidth}{l l l X}
     \toprule
@@ -687,7 +669,7 @@ Replicated caching:
 \subsection{Structural and engineering characteristics}
 
 \begin{table}[h!]
-  \renewcommand{\arraystretch}{1.4}
+  \renewcommand{\arraystretch}{1.3}
   \centering
   \begin{tabularx}{\textwidth}{l l X X X X X}
     \toprule
@@ -709,7 +691,7 @@ Replicated caching:
 \subsection{Operational characteristics}
 
 \begin{table}[h!]
-  \renewcommand{\arraystretch}{1.4}
+  \renewcommand{\arraystretch}{1.3}
   \centering
   \begin{tabularx}{\textwidth}{l l X X X X X}
     \toprule
