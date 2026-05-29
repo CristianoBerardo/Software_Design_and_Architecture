@@ -57,7 +57,7 @@ goa
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{\textwidth}{>{\raggedleft\arraybackslash}X >{\raggedleft\arraybackslash}X >{\raggedleft\arraybackslash}X}
+  \begin{tabular}{lll}
     \toprule
     \multicolumn{1}{l}{\textbf{Entity}} & \multicolumn{1}{l}{\textbf{Attribute}} & \multicolumn{1}{l}{\textbf{Measure}} \\
     \midrule
@@ -69,7 +69,7 @@ goa
     Testing process                     & Fault frequency                        & \# of faults found / kLOC            \\
     Source code                         & Quality                                & \# of faults found / kLOC            \\
     \bottomrule
-  \end{tabularx}
+  \end{tabular}
 \end{table}
 
 
@@ -321,9 +321,11 @@ Weak order relation $\succ$ (reflexive, transitive):
 
 \paragraph{Example}
 Entity: person; Attribute: agreement with statement.
-\[
-  \text{Completely disagree} \prec \text{Partly disagree} \prec \text{Partly agree} \prec \text{Completely agree}
-\]
+$\text{Completely disagree} \prec \text{Partly disagree} \prec \text{Partly agree} \prec \text{Completely agree}$
+
+
+
+\vspace{1cm}
 Admissible mapping: $M(x) = 1, 2, 3, 4$ respectively for Completely disagree to Completely agree.
 
 \subsection{Ordinal Statistics}
@@ -400,7 +402,7 @@ absolute scale (\# of lines is); age is \emph{not} measurable on an absolute sca
 \begin{table}[h!]
   \renewcommand{\arraystretch}{1.4}
   \centering
-  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X}
+  \begin{tabular}{lll}
     \toprule
     \textbf{Scale} & \textbf{Admissible Transformations} & \textbf{Example}           \\
     \midrule
@@ -410,7 +412,7 @@ absolute scale (\# of lines is); age is \emph{not} measurable on an absolute sca
     Ratio          & $M' = a \cdot M$, $a > 0$           & Time interval, length      \\
     Absolute       & $M' = M$                            & Counting entities          \\
     \bottomrule
-  \end{tabularx}
+  \end{tabular}
 \end{table}
 
 % ============================================================
@@ -495,25 +497,40 @@ An indicator is defined by:
   \end{minipage}
 \end{flushleft}
 
-\subsection{Indicator Robustness}
 
-\begin{itemize}
-  \item \textbf{Comprehensibility / Understandability}: how simple
-  \item \textbf{Processing Cost}: initial and incremental
-  \item \textbf{Significance / Meaningfulness}: how much it covers the information need
-  \item \textbf{Frequency}: how often indicator varies
-  \item \textbf{Structuredness}: how much it is objective/not ambiguous
-\end{itemize}
 
-\subsection{SMART Indicators}
 
-\begin{itemize}
-  \item \textbf{S}pecific in purpose
-  \item \textbf{M}easurable
-  \item \textbf{A}chievable
-  \item \textbf{R}elevant
-  \item \textbf{T}imely
-\end{itemize}
+
+\begin{flushleft}
+  \begin{minipage}[t]{0.45\linewidth}
+    \raggedright
+    \subsection{Indicator Robustness}
+
+    \begin{itemize}
+      \item \textbf{Comprehensibility / Understandability}: how simple
+      \item \textbf{Processing Cost}: initial and incremental
+      \item \textbf{Significance / Meaningfulness}: how much it covers the information need
+      \item \textbf{Frequency}: how often indicator varies
+      \item \textbf{Structuredness}: how much it is objective/not ambiguous
+    \end{itemize}
+
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.45\linewidth}
+    \raggedright
+    \subsection{SMART Indicators}
+
+    \begin{itemize}
+      \item \textbf{S}pecific in purpose
+      \item \textbf{M}easurable
+      \item \textbf{A}chievable
+      \item \textbf{R}elevant
+      \item \textbf{T}imely
+    \end{itemize}
+
+  \end{minipage}
+\end{flushleft}
+
 
 \subsection{Aggregation Dimensions Or segmentation}
 
@@ -545,10 +562,9 @@ often nominal or ordinal measures not directly linked to the objective of the in
 
 
 
-
-\begin{center}
+\begin{flushleft}
   \begin{minipage}{0.65\linewidth}
-
+    \raggedright
     \paragraph{Measurement guiding principle}
 
     \begin{quote}
@@ -579,7 +595,7 @@ often nominal or ordinal measures not directly linked to the objective of the in
     \includegraphics[width=\linewidth]{content/chapters/images/2026-05-26-21-30-08.png}
 
   \end{minipage}
-\end{center}
+\end{flushleft}
 
 
 % ============================================================
@@ -653,21 +669,17 @@ Input for sw development process:
 \begin{flushleft}
   \begin{minipage}[t]{0.45\linewidth}
     \raggedright
-    \begin{figure}[h!]
-      \centering
-      \includegraphics[width=\linewidth]{content/chapters/images/2026-05-26-21-31-43.png}
-      \captionof{figure}{Quality Measure Elements}
-    \end{figure}
+    \includegraphics[width=\linewidth]{content/chapters/images/2026-05-26-21-31-43.png}
+    \captionof{figure}{Quality Measure Elements}
+
 
   \end{minipage}%
   \hfill
   \begin{minipage}[t]{0.45\linewidth}
     \raggedright
-    \begin{figure}[h!]
-      \centering
-      \includegraphics[width=\linewidth]{content/chapters/images/2026-05-26-21-31-57.png}
-      \captionof{figure}{QMEs: size}
-    \end{figure}
+    \includegraphics[width=\linewidth]{content/chapters/images/2026-05-26-21-31-57.png}
+    \captionof{figure}{QMEs: size}
+
 
   \end{minipage}
 \end{flushleft}
@@ -806,20 +818,15 @@ $V(G)$ is the number of base paths in $G$ — the number of linearly independent
 initial node to final node.
 
 \paragraph{Cyclomatic number}
-If $G$ is a strongly connected graph:
-\[
-  V(G) = \#E - \#N + 1
-\]
-A typical CFG is not strongly connected (unless we add an edge from the final to the
-initial node):
-\[
-  V(G) = \#E - \#N + 2
-\]
+If $G$ is a strongly connected graph: $V(G) = \#E - \#N + 1$
 
-\begin{center}
+A typical CFG is not strongly connected (unless we add an edge from the final to the
+initial node):$V(G) = \#E - \#N + 2$
+
+\begin{flushleft}
   \begin{minipage}{0.42\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{content/chapters/images/2026-05-26-21-36-23.png}
+    \raggedright
+    \includegraphics[width=0.6\linewidth]{content/chapters/images/2026-05-26-21-36-23.png}
   \end{minipage}%
   \hfill
   \begin{minipage}{0.52\linewidth}
@@ -833,7 +840,7 @@ initial node):
     \end{itemize}
     \[V(G) = E - N + 1 = 14 - 11 + 2 = 5\]
   \end{minipage}
-\end{center}
+\end{flushleft}
 
 \paragraph{Cyclomatic complexity in practice}
 Start at 1; iterate on all statements; add 1 for every complexity-incrementing statement.
@@ -881,6 +888,7 @@ For Java: \texttt{if, for, while, case, catch, throw, \&\&, ||, ?}
   LCOM_2 = 1 - \frac{\sum m_{A_i}}{m \cdot a}
 \]
 
+\vspace{0.5cm}
 where $m$ = number of methods in class, $a$ = number of attributes in class,
 $m_{A_i}$ = number of methods using attribute $A_i$.
 
